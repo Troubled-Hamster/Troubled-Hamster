@@ -1,4 +1,4 @@
-# Project Name #
+# Crowd Docs #
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -16,29 +16,27 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
  
-## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > Help developers understand your documentation by injecting crowd sourced commentary into your webstite.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > By crowd sourcing commentary on your docs, the developer community will better understand your library and be more likely to use it.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > Often times documentation can be both difficult to write and to understand, and it is both unclear and uncertain where to find the best answers to your questions.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > We supplement your documentation with advice and comments from the developer community that is injected directly into your site.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > "Help your users know your product. Let your users help each other. Use Crowd Docs."
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Its as simple as injecting our script into your docs page. We do the rest.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > "After countless frustrating experiences, wasting time looking for answers to questions I could barely articulate, I was extremeley relieved to find the path to enlightenment right in the docs I was trying to understand!"
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
