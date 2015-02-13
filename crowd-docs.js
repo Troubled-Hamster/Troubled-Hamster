@@ -41,17 +41,35 @@ $(function (){
     // method and library title that we are using to search in stackoverflow API / comments
     var method = headerParent[0].id;
     var title = $('title')[0].innerHTML;
+    // select existing iframe
+    var $existingIframe = $('iframe')[0];
+    // spam check
+    if (!$('.crowd-docs-' + method)[0]) {
+      // if there is an existing iframe, remove it
+      if ($existingIframe) {
+        $existingIframe.remove();
+      }
+      // position of iframe to be inserted
+      var offsetTop = headerParent[0].offsetTop;
+      var offsetWidth = headerParent[0].offsetWidth;
 
-    var $iframe = $('<iframe/>');
-    $iframe.src = 'dummy.html';
-    var styles = {
-      'float': 'right',
-      width: 300,
-      height: 600
+      // create iframe element
+      var $iframe = $('<iframe/>');
+      // set iframe src
+      $iframe.attr('src', 'http://shinuesugi.web.fc2.com');
+      // define and set iframe's styles
+      var styles = {
+        position: 'absolute',
+        'float': 'right',
+        width: 400,
+        height: 600,
+        top: offsetTop,
+        left: offsetWidth + 100
+      };
+      $iframe.css(styles);
+      $iframe.addClass('crowd-docs-' + method);
+      headerParent.after($iframe);
     }
-    $iframe.css(styles);
-    var $button = headerParent.children('.crowd-docs-button');
-    headerParent.after($iframe);
   };
 
 });
