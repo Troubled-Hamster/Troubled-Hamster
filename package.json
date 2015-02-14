@@ -1,27 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "Troubled-Hamster",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "mongo": "^0.1.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Troubled-Hamster/Troubled-Hamster.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/delucco/Troubled-Hamster/issues"
-  },
-  "homepage": "https://github.com/delucco/Troubled-Hamster"
-=======
   "name": "flockdocs",
   "version": "0.0.0",
   "description": "",
@@ -51,5 +28,4 @@
     "passport": "^0.2.0",
     "request": "^2.36.0"
   }
->>>>>>> b8f3bb9ffb0e88222029d36d11d5ee3bae4c3263
 }
