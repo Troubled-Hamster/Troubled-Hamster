@@ -3,3 +3,9 @@ code {
   word-wrap: normal;
   word-break: break-all;
 }
+body {
+  padding-top: 50px;
+}
+.navbar-fixed-top {
+  background-color: #E6E6E6;
+}
