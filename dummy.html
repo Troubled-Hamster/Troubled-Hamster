@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet" href="crowd-docs.css">
+<body>
+  <div class='container-fluid'>
+  Backbone collection remove, ReferenceError: el is not defined
+
+  <p>I have a view for a collection, and when I invoke its remove method I call its collection remove method as well, and I'm getting a 'ReferenceError: el is not defined' which doesn't make any sense to me, why would a collection need an el.</p> <p>Invoking code:</p> <pre><code>try { myAppModel=backboneApp.views.privateViews.myAppsTabView.myAppsView.views.myAppsPrivateView.collection.get(appId); backboneApp.views.privateViews.myAppsTabView.myAppsView.views.myAppsPrivateView.remove(myAppModel); } catch(e) { console.log("delFromMyAppsCollection: Failed to delete app from collection e= " + e); } </code></pre> <p>Remove method within View:</p> <pre><code>remove : function(modelToRemove) { alert('Killing!'); console.log("MyAppsPrivateView.remove called with model: ", modelToRemove ); this.collection.remove(modelToRemove); console.log("MyAppsPrivateView.remove collection: ", this.collection ); this._rendered = false; } </code></pre> <p>I guess it may be a better way to delete an element from a collection/view, but still it seems odd that the collection is complaining about not having an el, any ideas?</p> <p>Thanks in advance.</p> <p>Just in case,</p> <p>view definition:</p> <pre><code>var MyAppsPrivateView = Backbone.View.extend( { // Reference to this collection's model. model: PapsCatalog , // don't should be PapModel instead of a collection? templateId: Epc2G.myAppsTemplateId, template: jQuery('#' + this.templateId).html(), </code></pre> <p>view instantiation:</p> <pre><code>var options = { className : "MyAppsContainer", uid : "myAppsPrivateView", collection : papsCollection, el : "#myAppsView" }; var oMyAppsPrivateView = new MyAppsPrivateView(_.clone(options)); </code></pre> 
+
+  <p>Might it relate to <code>Backbone.View</code> already having a <code>remove</code> method, and you’re overriding it?</p> <p>This sounds like a composite view situation, have you considered having a view for every model in the collection?</p> 
+  </div>
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  <script type="text/javascript" src="codeFormatter.js"></script>
+</body>
+</html>

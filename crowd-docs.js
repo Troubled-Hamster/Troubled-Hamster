@@ -56,7 +56,8 @@ $(function (){
       // create iframe element
       var $iframe = $('<iframe/>');
       // set iframe src
-      $iframe.attr('src', 'http://shinuesugi.web.fc2.com');
+      // $iframe.attr('src', 'http://shinuesugi.web.fc2.com');
+      $iframe.attr('src', 'dummy.html');
       // define and set iframe's styles
       var windowWidth = $(window).width();
       var windowHeight = $(window).height();

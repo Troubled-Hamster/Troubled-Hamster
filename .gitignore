@@ -6,4 +6,5 @@ build/
 dist/
 
 backbone.html
-dummy.html
+
+.DS_Store
