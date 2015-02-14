@@ -58,13 +58,20 @@ $(function (){
       // set iframe src
       $iframe.attr('src', 'http://shinuesugi.web.fc2.com');
       // define and set iframe's styles
+      var windowWidth = $(window).width();
+      var windowHeight = $(window).height();
+      var containerWidth = $('.container').width();
+      var sidebarWidth = $('#sidebar').width();
+      var containerMarginLeft = parseInt($('.container').css('marginLeft'));
+      var sidebarPaddingLeft = parseInt($('#sidebar').css('paddingLeft'));
+      var offset = 100;
+
       var styles = {
         position: 'absolute',
-        'float': 'right',
-        width: 400,
-        height: 600,
+        width: windowWidth - containerWidth - (containerMarginLeft - sidebarWidth) - sidebarWidth - sidebarPaddingLeft - offset,
+        height: windowHeight - offset,
         top: offsetTop,
-        left: offsetWidth + 100
+        left: offsetWidth + offset
       };
       $iframe.css(styles);
       $iframe.addClass('crowd-docs-' + method);
