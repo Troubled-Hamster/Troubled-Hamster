@@ -12,7 +12,7 @@ module.exports = function (app, express) {
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../client'));
 
-  app.use('/api/method', methodRouter); // use method router for all method requests
+  app.use('/api/methods', methodRouter); // use method router for all method requests
 
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
