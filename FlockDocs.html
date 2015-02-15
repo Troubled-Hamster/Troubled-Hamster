@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet" href="crowd-docs.css">
+<body>
+  <ul class="nav nav-tabs navbar-fixed-top">
+    <a class="navbar-brand" href="#">
+      <img src="hamster-transparent.png">
+    </a>
+    <li role="presentation"><a href="dummy.html">Stack Overflow</a></li>
+    <li role="presentation" class="active"><a href="#">FlockDocs</a></li>
+  </ul>
+  <div class='container-fluid'>
+    <h4>Backbone.js Get Method</h4>
+
+    <div class='question'>
+      Can you explain the Backbone.js get method?
+    </div>
+    <div class='answer'>
+      <hr>
+      <h4>Answer</h4>
+      <p>Might it relate to <code>Backbone.View</code> already having a <code>remove</code> method, and you’re overriding it?</p> <p>This sounds like a composite view situation, have you considered having a view for every model in the collection?</p> 
+    </div>
+    <div class='answer'>
+      <hr>
+      <h4>Answer</h4>
+      <p>Your overwriting the prototype, so when you invoke it, it will keep recursing. You either need to create a new base collection that gets extended, or push the functionality into your existing extension -- depending on how reusable you want to make it.</p> <pre><code>var MyBaseCollection = Backbone.Collection.extend({ remove: function(models, options){ console.log('removing'); Backbone.Collection.prototype.remove.call(this, models, options); this.trigger('removed', models); } }); var MyColl = MyBaseCollection.extend({ }); </code></pre> <p>or add that into MyColl directly.</p>
+    </div>
+    <div class='addAnswer'>
+      <hr>
+      <h4>Add an Answer</h4>
+      <textarea class='userAnswer' rows='8' cols='30'></textarea>
+      <button type='button' class='btn btn-success'>Success</button>
+    </div>
+  </div>
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  <script type="text/javascript" src="codeFormatter.js"></script>
+  <script type="text/javascript" src="stackAuthentication.js"></script>
+</body>
+</html>
