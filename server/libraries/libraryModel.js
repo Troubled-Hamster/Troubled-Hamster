@@ -1,17 +1,13 @@
+
 var mongoose = require('mongoose');
 
 var LibrarySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true
   },
-  methods: [{
-    name: String,
-    topQuestions: {},
-    explanations: {}
-  }]
+  methods: [String]
 });
 
-model.exports = mongoose.model('Library', LibrarySchema);
+module.exports = mongoose.model('Library', LibrarySchema, 'libraries');
 
