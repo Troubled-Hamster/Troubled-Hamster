@@ -14,4 +14,3 @@ console.log('Server listening on ' + port);
 
 // export our app for testing and flexibility
 module.exports = app;
-
