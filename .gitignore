@@ -8,3 +8,5 @@ dist/
 backbone.html
 
 .DS_Store
+
+server/libraries/supportedLibraries/*.*
