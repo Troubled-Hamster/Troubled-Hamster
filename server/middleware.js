@@ -1,6 +1,7 @@
 var morgan      = require('morgan'), // used for logging incoming request
     bodyParser  = require('body-parser'),
-    helpers     = require('./helpers.js'); // our custom middleware
+    helpers     = require('./helpers.js'), // our custom middleware
+    path = require('path');
 
 
 module.exports = function (app, express) {
@@ -19,4 +20,8 @@ module.exports = function (app, express) {
 
   // inject our routers into their respective route files
   require('./methods/methodRoutes.js')(methodRouter);
+
+  app.get('/', function(req, res) {
+    res.sendFile(path.resolve(__dirname + '/../client/backbone.html'));
+  });
 };

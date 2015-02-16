@@ -39,8 +39,8 @@ $(function (){
 
   var displayIframe = function(headerParent) {
     // method and library title that we are using to search in stackoverflow API / comments
-    var method = headerParent[0].id;
     var title = $('title')[0].innerHTML;
+    var method = headerParent[0].id;
     // select existing iframe
     var $existingIframe = $('iframe')[0];
     // spam check
@@ -57,7 +57,7 @@ $(function (){
       var $iframe = $('<iframe/>');
       // set iframe src
       // $iframe.attr('src', 'http://shinuesugi.web.fc2.com');
-      $iframe.attr('src', 'dummy.html');
+      $iframe.attr('src', 'http://localhost:3000/api/methods/' + title + '/' + method + '.html');
       // define and set iframe's styles
       var windowWidth = $(window).width();
       var windowHeight = $(window).height();
