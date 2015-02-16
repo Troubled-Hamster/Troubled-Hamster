@@ -1,0 +1,5 @@
+{
+  "name": "underscore.js", 
+  "methods": 
+    ["each", "map", "reduce", "sortBy", "every", "invoke", "throttle"]
+}
