@@ -26,13 +26,13 @@ gulp.task('start', ['serve'],function () {
     // address for server,
     injectChanges: true,
     files: paths.scripts.concat(paths.html, paths.styles),
-    proxy: 'localhost:8000'
+    proxy: 'localhost:3000'
   });
 });
 
 // start our node server using nodemon
 gulp.task('serve', function() {
-  nodemon({script: 'index.js', ignore: 'node_modules/**/*.js'});
+  nodemon({script: 'server/server.js', ignore: 'node_modules/**/*.js'});
 });
 
 gulp.task('default', ['start']);
