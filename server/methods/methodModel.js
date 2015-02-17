@@ -10,7 +10,8 @@ var MethodSchema = new mongoose.Schema({
     required: true,
   },
   topQuestions: [{}],
-  docHelp: [],
+  docHelp: []
+
 });
 
 MethodSchema.index({library: 1, name: 1}, {unique: true});

@@ -25,8 +25,7 @@ module.exports = function (app, express) {
   require('./flockDocs/flockDocsRoutes.js')(flockDocsRouter);
 
 
-  // imports all libraries in library directory into mongo
-  require('./libraries/libraryController.js'); 
+
 
   app.get('/', function(req, res) {
     res.sendFile(path.resolve(__dirname + '/../client/underscore.html'));
