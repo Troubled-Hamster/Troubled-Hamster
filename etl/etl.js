@@ -3,6 +3,13 @@ var http = require('http');
 var Library = require('../server/libraries/libraryModel.js');
 var zlib = require('zlib');
 var Method = require('../server/methods/methodModel.js');
+var google = require('google');
+var _ = require('underscore');
+
+google.resultsPerPage = 3;
+
+var questionIDRegex = /stackoverflow.com\/questions\/(\d+)\//;
+
 
 mongoose.connect('mongodb://localhost/flockdocs'); // connect to mongo database named flockdocs
 
@@ -48,7 +55,6 @@ var getStackOverflowData = function(libraryName, method) {
 
     gzstream.on('end', function() {
       // console.log(json);
-
       var data = JSON.parse(json);
       console.log(libraryName + "::" + method);
       console.log("QUOTA REMAINING:" + data.quota_remaining);
