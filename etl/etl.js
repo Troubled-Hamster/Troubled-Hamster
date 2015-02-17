@@ -3,13 +3,11 @@ var http = require('http');
 var Library = require('../server/libraries/libraryModel.js');
 var zlib = require('zlib');
 var Method = require('../server/methods/methodModel.js');
-var google = require('google');
+var bing = require('node-bing-api')({accKey: process.env.BING_ACCOUNT_KEY});
 var _ = require('underscore');
 
-google.resultsPerPage = 3;
-
-var questionIDRegex = /stackoverflow.com\/questions\/(\d+)\//;
-
+var QUESTIONS_PER_METHOD = 3;
+var QUESTION_ID_REGEX = /stackoverflow.com\/questions\/(\d+)\//;
 
 mongoose.connect('mongodb://localhost/flockdocs'); // connect to mongo database named flockdocs
 
