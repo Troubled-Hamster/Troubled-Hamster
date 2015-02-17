@@ -5,7 +5,7 @@ code {
 }
 
 body {
-  padding-top: 50px;
+  padding-top: 60px;
 }
 
 .navbar-fixed-top {
@@ -18,4 +18,9 @@ body {
 
 .checkmark {
   margin-bottom: 5px;
+}
+
+.question {
+  padding: 10px;
+  background-color: #FFF8DC;
 }

@@ -10,10 +10,9 @@ var MethodSchema = new mongoose.Schema({
     required: true,
   },
   topQuestions: [{}],
-  docHelp: [{}],
+  docHelp: [],
 });
 
 MethodSchema.index({library: 1, name: 1}, {unique: true});
 
 module.exports = mongoose.model('Method', MethodSchema, 'methods');
-
