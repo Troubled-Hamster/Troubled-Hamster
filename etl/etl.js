@@ -41,6 +41,27 @@ Method.remove({}).exec().then(function(numRemoved) {
             console.log("QUOTA REMAINING:" + data.quota_remaining);
             // console.dir(data.items[0]);
 
+            //order the answer arrays by score, and restrict them to the top 3 non-negative-scored answers
+            data.items.forEach(function(item) {
+              item.answers.sort(function(a,b) {
+                if(a.score > b.score) {
+                  return -1;
+                } else if (b.score < a.score) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+              });
+
+              item.answers = item.answers.slice(0,3);
+              for (var i = item.answers.length - 1; i >= 0; i--) {
+                if(item.answers[i].score < 0) {
+                  item.answers.pop();
+                }
+              }
+            });
+
+
             if(data.items.length) {
               Method.create({name: method, library: lib.name, topQuestions: data.items}).then(function(doc,err) {
                 if(err){
