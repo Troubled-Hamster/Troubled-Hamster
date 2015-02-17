@@ -23,17 +23,25 @@ module.exports = {
     Method.findOne({name: methodName, library: libraryName})
     .exec().then(function(method) {
       if (!method) {
-        res.send("Sorry, this method doesn't exist!");
+        Method.create({name: methodName, library: libraryName, docHelp: [answer]}).then(function(err, method){
+          if (err){
+            res.send(err);
+          } else {
+            res.send(method);
+          }
+        });
+        // res.send("Sorry, this method doesn't exist!");
+      } else {
+        method.docHelp.push(answer);
+        method.save(function(err, method) {
+          if (err) {
+            console.log('error!')
+          } else {
+            console.log('method answer successfully saved!')
+          }
+          res.send('posted');
+        });
       }
-      method.docHelp.push(answer);
-      method.save(function(err, method) {
-        if (err) {
-          console.log('error!')
-        } else {
-          console.log('method answer successfully saved!')
-        }
-        res.send('posted');
-      });
     });
   }
 };
