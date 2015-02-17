@@ -10,4 +10,5 @@ underscore.html
 
 .DS_Store
 
-server/libraries/supportedLibraries/*.*
+server/libraries/supportedLibraries/*
+!server/libraries/supportedLibraries/.emptyDir
