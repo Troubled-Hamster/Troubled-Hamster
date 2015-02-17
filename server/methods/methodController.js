@@ -1,5 +1,5 @@
 var Method = require('./methodModel.js');
-var htmlGenerator = require('../htmlGenerator.js');
+var stackHTMLGenerator = require('./stackHTMLGenerator.js');
 
 module.exports = {
 
@@ -13,7 +13,7 @@ module.exports = {
         res.send("Sorry, I couldn't find any relevant questions.");
       }
       // res.send(method.topQuestions);
-      htmlGenerator.generateStackHTML(req, res, method.topQuestions);
+      stackHTMLGenerator.generateHTML(req, res, method.topQuestions);
       res.end();
     }, function(err) {
       console.log("ERROR:");
