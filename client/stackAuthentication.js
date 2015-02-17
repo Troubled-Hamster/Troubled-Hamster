@@ -1,6 +1,7 @@
 $(function(){
   // var token = window.localStorage.getItem('flockDocsToken');
   // if(token){
+
   $('.btn').click(function(){
     var userAnswer = $('.userAnswer').val();
     $.ajax({
@@ -31,6 +32,14 @@ $(function(){
     $userAnswer.animate({
       height: 150
     }, 1000);
+  });
+
+  $('body').click(function() {
+    if ($userAnswer.css('height') === '150px') {
+      $userAnswer.animate({
+        height: 25
+      }, 1000);
+    }
   });
   // } else {
   //   $('.btn').text('Log in to Stack Overflow to answer');

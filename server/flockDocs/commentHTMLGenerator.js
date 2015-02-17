@@ -21,7 +21,7 @@ var generateContents = function(req, html, data) {
   // wrap html in fluid container (bootstrap)
   html += '<div class="container-fluid">';
 
-  html += '<div class="question"><h4>Question: Can you explain ' + lib + ' ' + method + ' method?</h4><div class="addAnswer"><hr><h4>Add an Answer</h4><textarea class="userAnswer"></textarea><div><button type="button" class="btn btn-success">Success</button></div></div></div>';
+  html += '<div class="question"><h4>Question: Can you explain ' + lib + ' ' + method + ' method?</h4><div class="addAnswer"><hr><h4>Add an Answer</h4><textarea class="userAnswer"></textarea><div><button type="button" class="btn btn-success">Submit</button></div></div></div>';
 
   // create answers class and populate with each answer in the database
   html += '<div class="answers">';
