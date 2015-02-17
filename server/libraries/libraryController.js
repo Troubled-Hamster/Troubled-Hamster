@@ -14,12 +14,16 @@ module.exports = {
               console.log(err);
             } else {
               data = JSON.parse(data);
-              Library.create({name: data.name, methods: data.methods}).then(function(err, lib){
-                if (err) {
-                  console.log(err);
-                } else {
-                  console.log(lib);
-                }
+
+              Library.remove({}).exec().then(function(numRemoved) {
+                console.log('Libraries collection cleared. ' + numRemoved + ' documents removed.');
+                Library.create({name: data.name, methods: data.methods}).then(function(lib, err){
+                  if (err) {
+                    console.log('error!');
+                  } else {
+                    console.log('Libraries saved!');
+                  }
+                });
               });
             }
           })
