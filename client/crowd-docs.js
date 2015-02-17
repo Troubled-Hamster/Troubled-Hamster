@@ -3,6 +3,12 @@ $(function (){
   var headers = $('.header').filter(function(index) {
     return isNaN(parseInt(this.innerHTML.substring(0, 1)));
   });
+
+  // add position:relative css property to the container
+  if ($('.container').css('position') !== 'relative') {
+    $('.container').css('position', 'relative');
+  }
+
   // handles mouse-enter event
   var displayButton = function() {
     // position in which we append the button
@@ -57,7 +63,7 @@ $(function (){
       var $iframe = $('<iframe/>');
       // set iframe src
       // $iframe.attr('src', 'http://shinuesugi.web.fc2.com');
-      $iframe.attr('src', 'http://localhost:3000/api/methods/' + title + '/' + method + '.html');
+      $iframe.attr('src', 'http://localhost:3000/api/methods/' + title + '/' + method);
       // define and set iframe's styles
       var windowWidth = $(window).width();
       var windowHeight = $(window).height();

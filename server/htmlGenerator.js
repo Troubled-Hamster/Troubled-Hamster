@@ -14,11 +14,22 @@ var generateContents = function(html, data) {
   // wrap html in fluid container (bootstrap)
   html += '<div class="container-fluid">';
 
-  // create question: title and contents
-  html += '<div class="question"><h4>Library name is ' + data.library + '</h4><p>Question contents here</p></h4></div>';
+  // contents: questions and answers
+  for (var i = 0; i < data.length; i++) {
+    html += '<div class="question"><h4>Question: ' + data[i].title + '</h4>' + data[i].body + '</h4></div>';
+    for (var j = 0; j < data[i].answers.length; j++) {
+      console.log(data[i].answers[j]);
+      if (data[i].answers[j].is_accepted) {
+        html += '<div class="answer"><hr><h4>Answer <img class="checkmark" src="http://localhost:3000/checkmark.gif"><span class="votes">Votes: ' + data[i].answers[j].score + '</span></h4>' + data[i].answers[j].body + '</h4></div>';
+      } else {
+        html += '<div class="answer"><hr><h4>Answer <span class="votes">Votes: ' + data[i].answers[j].score + '</span></h4>' + data[i].answers[j].body + '</h4></div>';
 
-  // create answer. <hr> inserts horizontal line
-  html += '<div class="answer"><hr><h4>Answer</h4><p>Method name is ' + data.method + '</p></h4></div>';
+      }
+    }
+    if (i + 1 < data.length) {
+      html += '<hr>';
+    }
+  }
 
   // end fluid container div
   html += '</div>';
