@@ -6,6 +6,7 @@ build/
 dist/
 
 backbone.html
+underscore.html
 
 .DS_Store
 
