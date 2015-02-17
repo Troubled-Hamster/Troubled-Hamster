@@ -10,10 +10,10 @@ module.exports = {
     Method.findOne({name: methodName, library: libraryName})
     .exec().then(function(method) {
       if(!method) {
-        res.send("Sorry, I couldn't find any relevant questions.");
+        stackHTMLGenerator.generateHTML(req, res, undefined);
+      } else {
+        stackHTMLGenerator.generateHTML(req, res, method.topQuestions);
       }
-      // res.send(method.topQuestions);
-      stackHTMLGenerator.generateHTML(req, res, method.topQuestions);
       res.end();
     }, function(err) {
       console.log("ERROR:");

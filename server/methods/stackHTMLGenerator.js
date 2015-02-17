@@ -56,7 +56,11 @@ module.exports = {
 
     var html = generateHeader(req);
     html = generateNavbar(req, html);
-    html = generateContents(req, html, data);
+    if (data) {
+      html = generateContents(req, html, data);
+    } else {
+      html += '<div class="question"><h4>No questions found for ' + req.params.library + ' ' + req.params.method + '</h4></div>';
+    }
     html = endHTML(html);
 
     res.write(html);

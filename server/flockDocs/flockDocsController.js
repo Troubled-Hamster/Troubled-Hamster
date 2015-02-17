@@ -8,9 +8,10 @@ module.exports = {
     Method.findOne({name: methodName, library: libraryName})
     .exec().then(function(method) {
       if(!method) {
-        res.send("Sorry, I couldn't find any relevant questions.");
+        commentHTMLGenerator.generateHTML(req, res, []);
+      } else {
+        commentHTMLGenerator.generateHTML(req, res, method.docHelp);
       }
-      commentHTMLGenerator.generateHTML(req, res, method.docHelp);
       res.end();
     });
   },
