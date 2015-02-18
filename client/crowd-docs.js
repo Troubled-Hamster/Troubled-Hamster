@@ -25,6 +25,11 @@ $(function (){
       // create button and add class & onclick event
       var $button = $('<button/>');
       $button.addClass('crowd-docs-button');
+      $button.css({
+        // 'background-image': "url('Chrome_Extension/hamster-transparent.png')",
+        'width': 20,
+        'background-color': 'purple'
+      });
       $button.click(displayIframe.bind(null, $(this)));
       appendPosition.after($button);
     }

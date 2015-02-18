@@ -10,7 +10,7 @@ var generateNavbar = function(req, html) {
   var host = req.headers.host;
   var lib = req.params.library;
   var method = req.params.method;
-  return html + '<body><ul class="nav nav-tabs navbar-fixed-top"><a class="navbar-brand" href="#"><img src="http://' + host + '/hamster-transparent.png"></a><li role="presentation"><a href="http://' + host + '/api/methods/' + lib + '/' + method + '">Stack Overflow</a></li><li role="presentation" class="active"><a href="#">FlockDocs</a></li></ul>';
+  return html + '<body><ul class="nav nav-tabs navbar-fixed-top"><a class="navbar-brand" href="#"><img src="http://' + host + '/hamster-transparent.png"></a><li role="presentation"><a href="http://' + host + '/api/methods/' + lib + '/' + method + '">Stack Overflow</a></li><li role="presentation" class="active"><a href="#">Tips and Tricks</a></li></ul>';
 };
 
 // generate contents of html file
