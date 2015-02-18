@@ -26,7 +26,6 @@
   "dependencies": {
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
-    "google": "^0.6.0",
     "jsdom": "^3.1.1",
     "jwt-simple": "^0.2.0",
     "mongoose": "^3.8.23",
