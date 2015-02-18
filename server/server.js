@@ -6,7 +6,11 @@ var password = process.env.mongo_lab_password;
 
 var app = express();
 
-mongoose.connect('mongodb://'+user+':'+password+'@ds045531.mongolab.com:45531/flockdocs'); // connect to mongo database named flockdocs
+if(user) { //assume prod if mongo_lab_user is set
+  mongoose.connect('mongodb://'+user+':'+password+'@ds045531.mongolab.com:45531/flockdocs'); // connect to mongo database named flockdocs
+} else {
+  mongoose.connect('mongodb://localhost/flockdocs');
+}
 
 // configure our server with all the middleware and and routing
 require('./middleware.js')(app, express);
