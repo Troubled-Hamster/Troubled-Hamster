@@ -1,3 +1,12 @@
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
+deploy:
+  provider: elasticbeanstalk
+  region: us-west-2
+  app: flockDocs
+  env: flockDocs-dev
+  bucket_name: elasticbeanstalk-us-west-2-895877759690
+  access_key_id: AKIAJK7RTO3GJMBRO5AA
+  secret_access_key:
+    secure: n4YudnSAv2IvvUSZiLsSdH07oo5MStLKl6IN0TeO3Wu71hp79VlVUlX2eOkhy9E3kdCdLnLVIYQOpwJJM/IxEF6PU/EgjTuDp3NBa5EP/8gyISWNlEYBY1A6gfd214LxaJpF0+AVlvfPvbbkHF8FKKbMOfW6OKS58Snu9u4cRnA=
