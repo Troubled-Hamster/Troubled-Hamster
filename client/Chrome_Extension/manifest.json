@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+
+  "name": "FlockDocs",
+  "description": "This extension adds supplemental information to backbonejs and underscorejs.",
+  "version": "0.1",
+
+  "browser_action": {
+    "default_icon": "assets/hamster-transparent.png",
+    "default_popup": "popup.html"
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["http://backbonejs.org/*", "http://underscorejs.org/*"],
+      "js": ["jquery-1.11.2.min.js", "crowd-docs.js"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    "assets/*"
+  ]
+}
