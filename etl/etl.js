@@ -11,7 +11,13 @@ var path = require('path');
 var QUESTIONS_PER_METHOD = 3;
 var QUESTION_ID_REGEX = /stackoverflow.com\/questions\/(\d+)\//;
 
-mongoose.connect('mongodb://localhost/flockdocs'); // connect to mongo database named flockdocs
+var user = process.env.mongo_lab_user;
+var password = process.env.mongo_lab_password;
+if(user) { //assume prod if mongo_lab_user is set
+  mongoose.connect('mongodb://'+user+':'+password+'@ds045531.mongolab.com:45531/flockdocs'); // connect to mongo database named flockdocs
+} else {
+  mongoose.connect('mongodb://localhost/flockdocs');
+}
 
 var waitTime = 0;
 
