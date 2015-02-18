@@ -1,4 +1,4 @@
-language: node.js
+language: node_js
 node_js:
 - '0.10'
 deploy:
@@ -9,4 +9,4 @@ deploy:
   bucket_name: elasticbeanstalk-us-west-2-895877759690
   access_key_id: AKIAJK7RTO3GJMBRO5AA
   secret_access_key:
-    secure: Eiu84HWi/8blmSE4qAprEjhiZ7FvWL9ehWpqIs+hKuqtxsGWtCQFsy//LnC8kfHM7WgBvbL+XLC6skfuitqtWeVNQyC/ZDl9qh5JFortLtaLauvzwmRemFuKr1JP+b5VMCz1F2aihPxj6jGk74Sg6uH4NIlXXNvvLcBsm4P06oM=
+    secure: n4YudnSAv2IvvUSZiLsSdH07oo5MStLKl6IN0TeO3Wu71hp79VlVUlX2eOkhy9E3kdCdLnLVIYQOpwJJM/IxEF6PU/EgjTuDp3NBa5EP/8gyISWNlEYBY1A6gfd214LxaJpF0+AVlvfPvbbkHF8FKKbMOfW6OKS58Snu9u4cRnA=
