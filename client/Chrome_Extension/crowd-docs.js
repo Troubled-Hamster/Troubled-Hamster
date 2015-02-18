@@ -23,15 +23,14 @@ $(function (){
     // if either one of alias or code exist, append the button
     if (appendPosition) {
       // create button and add class & onclick event
-      var $button = $('<button/>');
-      $button.addClass('crowd-docs-button');
-      $button.css({
-        // 'background-image': "url('Chrome_Extension/hamster-transparent.png')",
-        'width': 20,
-        'background-color': 'purple'
+      var image = chrome.extension.getURL('assets/hamster-transparent.png');
+      var $img = $('<img/>');
+      $img.addClass('crowd-docs-button').attr('src', image);
+      $img.css({
+        'margin-left': 20
       });
-      $button.click(displayIframe.bind(null, $(this)));
-      appendPosition.after($button);
+      $img.click(displayIframe.bind(null, $(this)));
+      appendPosition.after($img);
     }
   };
   // handles mouse-leave event

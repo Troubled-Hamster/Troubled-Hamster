@@ -23,7 +23,9 @@ module.exports = function (app, express) {
   // inject our routers into their respective route files
   require('./methods/methodRoutes.js')(methodRouter);
   require('./flockDocs/flockDocsRoutes.js')(flockDocsRouter);
-  require('./libraries/libraryController.js');
+
+
+
 
   app.get('/', function(req, res) {
     res.sendFile(path.resolve(__dirname + '/../client/underscore.html'));

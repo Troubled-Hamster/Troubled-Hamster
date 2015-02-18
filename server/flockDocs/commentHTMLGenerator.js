@@ -2,7 +2,7 @@
 // loads bootstrap css, crowd-docs css, jquery, prettify, codeformatter.js, and stackauthentication.js
 var generateHeader = function(req) {
   var host = req.headers.host;
-  return '<!DOCTYPE html><html><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"><link rel="stylesheet" href="http://' + host + '/crowd-docs.css"><script src="http://code.jquery.com/jquery-1.11.2.min.js"></script><script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script><script type="text/javascript" src="http://' + host + '/codeFormatter.js"></script><script type="text/javascript" src="http://' + host + '/stackAuthentication.js"></script>';
+  return '<!DOCTYPE html><html><head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"><link rel="stylesheet" href="http://' + host + '/crowd-docs.css"><script src="http://code.jquery.com/jquery-1.11.2.min.js"></script><script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script><script type="text/javascript" src="http://' + host + '/codeFormatter.js"></script><script type="text/javascript" src="http://' + host + '/stackAuthentication.js"></script></head>';
 };
 
 // generate navbar of html file
@@ -10,7 +10,7 @@ var generateNavbar = function(req, html) {
   var host = req.headers.host;
   var lib = req.params.library;
   var method = req.params.method;
-  return html + '<body><ul class="nav nav-tabs navbar-fixed-top"><a class="navbar-brand" href="#"><img src="http://' + host + '/hamster-transparent.png"></a><li role="presentation"><a href="http://' + host + '/api/methods/' + lib + '/' + method + '">Stack Overflow</a></li><li role="presentation" class="active"><a href="#">FlockDocs</a></li></ul>';
+  return html + '<body><ul class="nav nav-tabs navbar-fixed-top"><a class="navbar-brand" href="#"><img src="http://' + host + '/hamster-transparent.png"></a><li role="presentation"><a href="http://' + host + '/api/methods/' + lib + '/' + method + '">Stack Overflow</a></li><li role="presentation" class="active"><a href="#">Tips and Tricks</a></li></ul>';
 };
 
 // generate contents of html file
@@ -38,7 +38,7 @@ var generateContents = function(req, html, data) {
 
 // end the HTML with appropriate closing tags
 var endHTML = function(html) {
-  return html + '</body></head></html>';
+  return html + '</body></html>';
 }
 
 module.exports = {
