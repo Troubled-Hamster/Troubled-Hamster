@@ -96,13 +96,15 @@ var getStackOverflowData = function(libraryName, method) {
             }));
           }
 
+          data.items = sortedQuestions;
+
           //order the answer arrays by score, and restrict them to the top 3 non-negative-scored answers
           data.items.forEach(function(item) {
             if(item.answers) {
               item.answers.sort(function(a,b) {
                 if(a.score > b.score) {
                   return -1;
-                } else if (b.score < a.score) {
+                } else if (a.score < b.score) {
                   return 1;
                 } else {
                   return 0;
@@ -121,7 +123,7 @@ var getStackOverflowData = function(libraryName, method) {
 
           if(data.items.length) {
             Method.create({name: method, library: libraryName, topQuestions: data.items}).then(function(doc,err) {
-              console.log("Successfully loaded: " + libraryName + '|' + method + '|' + sortedQuestions.join(';') + '|' + data.quota_remaining);
+              console.log("Successfully loaded: " + libraryName + '|' + method + '|' + data.quota_remaining);
               if(err){
                 console.dir(err);
               }
