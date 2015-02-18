@@ -4,7 +4,7 @@ node_js:
 deploy:
   provider: elasticbeanstalk
   region: us-west-2
-  app: flockDocs
+  app: Flock Docs
   env: flockDocs-dev
   bucket_name: elasticbeanstalk-us-west-2-895877759690
   access_key_id: AKIAJK7RTO3GJMBRO5AA
