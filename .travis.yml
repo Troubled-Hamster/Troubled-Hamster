@@ -1,6 +1,6 @@
 language: node.js
 node_js:
-- '0.10'
+  - '0.10'
 deploy:
   provider: elasticbeanstalk
   region: us-west-2
