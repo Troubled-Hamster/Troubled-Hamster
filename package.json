@@ -30,7 +30,9 @@
     "jwt-simple": "^0.2.0",
     "mongoose": "^3.8.23",
     "morgan": "^1.1.1",
+    "node-bing-api": "^0.1.7",
     "passport": "^0.2.0",
-    "request": "^2.36.0"
+    "request": "^2.36.0",
+    "underscore": "^1.7.0"
   }
 }
