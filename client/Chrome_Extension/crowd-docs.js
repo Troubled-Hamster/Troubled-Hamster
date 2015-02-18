@@ -67,7 +67,7 @@ $(function (){
       var $iframe = $('<iframe/>');
       // set iframe src
       // $iframe.attr('src', 'http://shinuesugi.web.fc2.com');
-      $iframe.attr('src', 'http://localhost:3000/api/methods/' + title + '/' + method);
+      $iframe.attr('src', 'http://flockdocs-dev.elasticbeanstalk.com/api/methods/' + title + '/' + method);
       // define and set iframe's styles
       var windowWidth = $(window).width();
       var windowHeight = $(window).height();
