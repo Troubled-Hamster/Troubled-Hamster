@@ -76,15 +76,20 @@ $(function (){
       var containerMarginLeft = parseInt($('.container').css('marginLeft'));
       var sidebarPaddingLeft = parseInt($('#sidebar').css('paddingLeft'));
       var offset = 100;
+      // sets minimum width for an iframe
+      var width = Math.max(400, windowWidth - containerWidth - (containerMarginLeft - sidebarWidth) - sidebarWidth - sidebarPaddingLeft - offset);
 
       var styles = {
         position: 'absolute',
-        width: windowWidth - containerWidth - (containerMarginLeft - sidebarWidth) - sidebarWidth - sidebarPaddingLeft - offset,
+        width: width,
         height: windowHeight - offset,
         top: offsetTop,
-        left: offsetWidth + offset
+        left: offsetWidth + offset,
+        padding: 3,
+        border: 0
       };
       $iframe.css(styles);
+      $iframe.css('background-color', '#999999');
       $iframe.addClass('crowd-docs-' + method);
       headerParent.after($iframe);
     }
