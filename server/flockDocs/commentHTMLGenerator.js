@@ -10,7 +10,7 @@ var generateNavbar = function(req, html) {
   var host = req.headers.host;
   var lib = req.params.library;
   var method = req.params.method;
-  return html + '<body><ul class="nav nav-tabs navbar-fixed-top"><a class="navbar-brand" href="#"><img src="http://' + host + '/hamster-transparent.png"></a><li role="presentation"><a href="http://' + host + '/api/methods/' + lib + '/' + method + '">Stack Overflow</a></li><li role="presentation" class="active"><a href="#">Tips and Tricks</a></li></ul>';
+  return html + '<body><ul class="nav nav-tabs navbar-fixed-top"><img class="navbar-brand" src="http://' + host + '/hamster-transparent.png"><li role="presentation"><a href="http://' + host + '/api/methods/' + lib + '/' + method + '">Stack Overflow</a></li><li role="presentation" class="active"><a href="#">Comments</a></li></ul>';
 };
 
 // generate contents of html file
@@ -21,7 +21,7 @@ var generateContents = function(req, html, data) {
   // wrap html in fluid container (bootstrap)
   html += '<div class="container-fluid">';
 
-  html += '<div class="question"><h4>Question: Can you explain ' + lib + ' ' + method + ' method?</h4><div class="addAnswer"><hr><h4>Add an Answer</h4><textarea class="userAnswer"></textarea><div><button type="button" class="btn btn-success">Submit</button></div></div></div>';
+  html += '<div class="question"><h4>Comments on ' + lib + ' ' + method + ' method</h4><div class="addAnswer"><hr><h4>Add a Comment</h4><textarea class="userAnswer"></textarea><div><button type="button" class="btn btn-success">Submit</button></div></div></div>';
 
   // create answers class and populate with each answer in the database
   html += '<div class="answers">';

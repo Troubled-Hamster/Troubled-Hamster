@@ -67,7 +67,7 @@ $(function (){
       var $iframe = $('<iframe/>');
       // set iframe src
       // $iframe.attr('src', 'http://shinuesugi.web.fc2.com');
-      $iframe.attr('src', 'http://flockdocs-dev.elasticbeanstalk.com/api/methods/' + title + '/' + method);
+      $iframe.attr('src', 'http://localhost:3000/api/methods/' + title + '/' + method);
       // define and set iframe's styles
       var windowWidth = $(window).width();
       var windowHeight = $(window).height();
@@ -83,7 +83,7 @@ $(function (){
       var styles = {
         position: 'absolute',
         width: iFrameWidth,
-        height: windowHeight - offset,
+        height: windowHeight -
         top: offsetTop,
         left: offsetWidth + offset,
         padding: iFramePadding
@@ -91,9 +91,9 @@ $(function (){
 
       $iframe.css(styles);
       $iframe.draggable();
+      $iframe.css('background-color', '#999999');
       $iframe.addClass('crowd-docs-' + method);
       headerParent.after($iframe);
     }
   };
-
 });
