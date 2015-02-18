@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "FlockDocs",
-  "description": "This extension adds supplemental information to backbonejs and underscorejs.",
+  "description": "This extension gives access to supplemental information for the API documentation for Backbone.js and Underscore.js.",
   "version": "0.1",
 
   "browser_action": {
