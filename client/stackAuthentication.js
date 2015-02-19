@@ -42,9 +42,18 @@ $(function(){
     }
   });
 
+  //______________________stack css_____________________________//
+
   $('.title').click(function(){
-    $('.answer').toggleClass('hidden');
+    $(this).siblings().toggleClass('hidden');
   });
+
+  $('.title').hover(function(){
+    $(this).addClass('selected');
+  }, function(){
+    $(this).removeClass('selected');
+  });
+
   // } else {
   //   $('.btn').text('Log in to Stack Overflow to answer');
   //   $('.btn').click(function(){

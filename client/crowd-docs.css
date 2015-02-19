@@ -28,3 +28,8 @@ body {
 .hidden {
   display: none;
 }
+
+.selected {
+  /*border: 1px solid black;*/
+  background-color: #CCFFCC;
+}
