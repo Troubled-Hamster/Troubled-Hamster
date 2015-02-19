@@ -24,3 +24,12 @@ body {
   padding: 10px;
   background-color: #FFF8DC;
 }
+
+.hidden {
+  display: none;
+}
+
+.selected {
+  /*border: 1px solid black;*/
+  background-color: #CCFFCC;
+}

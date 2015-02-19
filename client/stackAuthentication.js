@@ -41,6 +41,19 @@ $(function(){
       }, 1000);
     }
   });
+
+  //______________________stack css_____________________________//
+
+  $('.title').click(function(){
+    $(this).siblings().toggleClass('hidden');
+  });
+
+  $('.title').hover(function(){
+    $(this).addClass('selected');
+  }, function(){
+    $(this).removeClass('selected');
+  });
+
   // } else {
   //   $('.btn').text('Log in to Stack Overflow to answer');
   //   $('.btn').click(function(){
