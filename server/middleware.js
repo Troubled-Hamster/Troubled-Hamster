@@ -1,13 +1,15 @@
 var morgan      = require('morgan'), // used for logging incoming request
     bodyParser  = require('body-parser'),
     helpers     = require('./helpers.js'), // our custom middleware
-    path = require('path');
+    path = require('path'),
+    jwt = require('jwt-simple');
 
 
 module.exports = function (app, express) {
 
   var methodRouter = express.Router();
   var flockDocsRouter = express.Router();
+  var annotationRouter = express.Router();
 
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
@@ -16,6 +18,7 @@ module.exports = function (app, express) {
 
   app.use('/api/methods', methodRouter); // use method router for all method requests
   app.use('/flockdocs', flockDocsRouter);
+  app.use('/annotation', annotationRouter);
 
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
@@ -23,7 +26,7 @@ module.exports = function (app, express) {
   // inject our routers into their respective route files
   require('./methods/methodRoutes.js')(methodRouter);
   require('./flockDocs/flockDocsRoutes.js')(flockDocsRouter);
-
+  require('./annotation/annotationRoutes.js')(annotationRouter);
 
 
 

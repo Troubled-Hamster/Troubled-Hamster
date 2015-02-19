@@ -91,9 +91,9 @@ $(function (){
 
       $iframe.css(styles);
       $iframe.draggable();
+      $iframe.css('background-color', '#999999');
       $iframe.addClass('crowd-docs-' + method);
       headerParent.after($iframe);
     }
   };
-
 });
