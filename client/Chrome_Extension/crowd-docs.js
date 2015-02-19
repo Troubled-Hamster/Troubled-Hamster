@@ -90,6 +90,7 @@ $(function (){
       };
 
       $iframe.css(styles);
+      $iframe.draggable();
       $iframe.addClass('crowd-docs-' + method);
       headerParent.after($iframe);
     }
