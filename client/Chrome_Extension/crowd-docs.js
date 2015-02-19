@@ -76,14 +76,19 @@ $(function (){
       var containerMarginLeft = parseInt($('.container').css('marginLeft'));
       var sidebarPaddingLeft = parseInt($('#sidebar').css('paddingLeft'));
       var offset = 100;
+      var iFramePadding = 5;
+      var minimumWidth = 320;
+      var iFrameWidth = Math.max((windowWidth - containerWidth - (containerMarginLeft - sidebarWidth) - sidebarWidth - sidebarPaddingLeft - offset), minimumWidth);
 
       var styles = {
         position: 'absolute',
-        width: windowWidth - containerWidth - (containerMarginLeft - sidebarWidth) - sidebarWidth - sidebarPaddingLeft - offset,
+        width: iFrameWidth,
         height: windowHeight - offset,
         top: offsetTop,
-        left: offsetWidth + offset
+        left: offsetWidth + offset,
+        padding: iFramePadding
       };
+
       $iframe.css(styles);
       $iframe.addClass('crowd-docs-' + method);
       headerParent.after($iframe);
