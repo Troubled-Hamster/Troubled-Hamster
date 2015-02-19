@@ -83,7 +83,7 @@ $(function (){
       var styles = {
         position: 'absolute',
         width: iFrameWidth,
-        height: windowHeight -
+        height: windowHeight - offset,
         top: offsetTop,
         left: offsetWidth + offset,
         padding: iFramePadding

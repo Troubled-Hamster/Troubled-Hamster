@@ -26,7 +26,7 @@ var generateContents = function(req, html, data) {
   // create answers class and populate with each answer in the database
   html += '<div class="answers">';
   for (var i = data.length - 1; i >= 0; i--) {
-   html += '<hr><div class="answer"><h4>Answer</h4><p>' + data[i] + '</p></div>';
+   html += '<hr><div class="answer"><h4>Comment</h4><p>' + data[i] + '</p></div>';
   }
   html += '</div>';
 
