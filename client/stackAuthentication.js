@@ -41,6 +41,10 @@ $(function(){
       }, 1000);
     }
   });
+
+  $('.title').click(function(){
+    $('.answer').toggleClass('hidden');
+  });
   // } else {
   //   $('.btn').text('Log in to Stack Overflow to answer');
   //   $('.btn').click(function(){
