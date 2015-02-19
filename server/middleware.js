@@ -34,4 +34,18 @@ module.exports = function (app, express) {
     res.sendFile(path.resolve(__dirname + '/../client/underscore.html'));
   });
 
+  app.get('/api/token', function(req, res) {
+    var consumerKey = process.env.CONSUMER_KEY;
+    var secret = process.env.CONSUMER_SECRET;
+    var ttl = 86400;
+    var date = new Date();
+    var token = jwt.encode({
+      'consumerKey': consumerKeys,
+      'userId': 'flockdocs23',
+      'issuedAt': date.toISOString(),
+      'ttl': ttl
+    }, secret);
+    res.send(token);
+  });
+
 };
