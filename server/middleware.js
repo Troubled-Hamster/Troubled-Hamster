@@ -2,7 +2,7 @@ var morgan      = require('morgan'), // used for logging incoming request
     bodyParser  = require('body-parser'),
     helpers     = require('./helpers.js'), // our custom middleware
     path = require('path'),
-    jwt = require('jwt-simple')
+    jwt = require('jwt-simple');
 
 
 module.exports = function (app, express) {
