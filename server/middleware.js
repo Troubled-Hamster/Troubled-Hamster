@@ -2,7 +2,7 @@ var morgan      = require('morgan'), // used for logging incoming request
     bodyParser  = require('body-parser'),
     helpers     = require('./helpers.js'), // our custom middleware
     path = require('path'),
-    jwt = require('jwt-simple');
+    jwt = require('jwt-simple')
 
 
 module.exports = function (app, express) {
@@ -32,6 +32,20 @@ module.exports = function (app, express) {
 
   app.get('/', function(req, res) {
     res.sendFile(path.resolve(__dirname + '/../client/underscore.html'));
+  });
+
+  app.get('/api/token', function(req, res) {
+    var consumerKey = process.env.CONSUMER_KEY;
+    var secret = process.env.CONSUMER_SECRET;
+    var ttl = 86400;
+    var date = new Date();
+    var token = jwt.encode({
+      'consumerKey': consumerKeys,
+      'userId': 'flockdocs23',
+      'issuedAt': date.toISOString(),
+      'ttl': ttl
+    }, secret);
+    res.send(token);
   });
 
 };
