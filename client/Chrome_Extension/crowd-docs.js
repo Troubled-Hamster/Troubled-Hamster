@@ -58,10 +58,14 @@ $(function (){
       // if there is an existing iframe, remove it
       if ($existingIframe) {
         $existingIframe.remove();
+        $('.remove').remove();
       }
       // position of iframe to be inserted
       var offsetTop = headerParent[0].offsetTop;
       var offsetWidth = headerParent[0].offsetWidth;
+
+      var $dragDiv = $('<div/>');
+      $dragDiv.addClass('drag');
 
       // create iframe element
       var $iframe = $('<iframe/>');
@@ -76,7 +80,7 @@ $(function (){
       var containerMarginLeft = parseInt($('.container').css('marginLeft'));
       var sidebarPaddingLeft = parseInt($('#sidebar').css('paddingLeft'));
       var offset = 100;
-      var iFramePadding = 5;
+      var iFramePadding = 7;
       var minimumWidth = 320;
       var iFrameWidth = Math.max((windowWidth - containerWidth - (containerMarginLeft - sidebarWidth) - sidebarWidth - sidebarPaddingLeft - offset), minimumWidth);
 
@@ -90,10 +94,36 @@ $(function (){
       };
 
       $iframe.css(styles);
-      $iframe.draggable();
+      $dragDiv.draggable();
       $iframe.css('background-color', '#999999');
       $iframe.addClass('crowd-docs-' + method);
-      headerParent.after($iframe);
+      $dragDiv.append($iframe);
+
+      // add a button next to the iframe to remove it
+      var $button = $('<button/>');
+      $button.addClass('remove');
+      var buttonOffset = 20;
+      var buttonStyles = {
+        position: 'absolute',
+        top: offsetTop,
+        left: offsetWidth + offset - buttonOffset
+      };
+      $button.css(buttonStyles);
+      $button.text('x');
+      $button.click(function() {
+        $('.remove').remove();
+        $('iframe').remove();
+      });
+      $dragDiv.append($button);
+      $('body').prepend($dragDiv);
+
+      var dragOffset = 225;
+      var dragStyles = {
+        position: 'absolute',
+        left: dragOffset,
+      };
+      $('.drag').css(dragStyles);
+      $('.drag').css('z-index', '10000');
     }
   };
 });
