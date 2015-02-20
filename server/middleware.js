@@ -2,7 +2,8 @@ var morgan      = require('morgan'), // used for logging incoming request
     bodyParser  = require('body-parser'),
     helpers     = require('./helpers.js'), // our custom middleware
     path = require('path'),
-    jwt = require('jwt-simple');
+    jwt = require('jwt-simple'),
+    cors = require('cors');
 
 
 module.exports = function (app, express) {
@@ -10,6 +11,8 @@ module.exports = function (app, express) {
   var methodRouter = express.Router();
   var flockDocsRouter = express.Router();
   var annotationRouter = express.Router();
+
+  app.use(cors());
 
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
