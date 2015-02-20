@@ -3,7 +3,7 @@
 
   "name": "FlockDocs",
   "description": "This extension gives access to supplemental information for the API documentation for Backbone.js and Underscore.js.",
-  "version": "0.1",
+  "version": "0.2",
 
   "browser_action": {
     "default_icon": "assets/hamster-transparent.png",
