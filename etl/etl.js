@@ -8,7 +8,7 @@ var _ = require('underscore');
 var path = require('path');
 // var async = require('async');
 
-var QUESTIONS_PER_METHOD = 3;
+var QUESTIONS_PER_METHOD = 10;
 var QUESTION_ID_REGEX = /stackoverflow.com\/questions\/(\d+)\//;
 
 var user = process.env.mongo_lab_user;
