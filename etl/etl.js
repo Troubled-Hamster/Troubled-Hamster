@@ -60,8 +60,10 @@ var getStackOverflowData = function(libraryName, method) {
     if(results.length > 0) {
       var questionIDs = [];
       for (var i = 0; i < results.length; i++) {
-        var questionID = results[i].Url.match(QUESTION_ID_REGEX)[1];
-        questionIDs.push(parseInt(questionID));
+        var urlMatch = results[i].Url.match(QUESTION_ID_REGEX);
+        if(urlMatch && urlMatch[1]) { //if we have a question ID
+          questionIDs.push(parseInt(urlMatch[1]));
+        }
       }
       // console.log(libraryName + ' ' + method + ' ' + questionIDs);
 
@@ -106,7 +108,7 @@ var getStackOverflowData = function(libraryName, method) {
 
           //order the answer arrays by score, and restrict them to the top 3 non-negative-scored answers
           data.items.forEach(function(item) {
-            if(item.answers) {
+            if(item && item.answers) {
               item.answers.sort(function(a,b) {
                 if(a.score > b.score) {
                   return -1;
