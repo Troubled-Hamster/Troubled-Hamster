@@ -40,7 +40,7 @@ module.exports = function (app, express) {
     var ttl = 86400;
     var date = new Date();
     var token = jwt.encode({
-      'consumerKey': consumerKeys,
+      'consumerKey': consumerKey,
       'userId': 'flockdocs23',
       'issuedAt': date.toISOString(),
       'ttl': ttl
