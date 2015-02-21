@@ -20,14 +20,17 @@ var generateContents = function(req, html, data) {
   html += '<div class="container-fluid">';
 
   // contents: questions and answers
+  console.log('length: ', data.length);
   for (var i = 0; i < data.length; i++) {
     html += '<div class="submission"><h4 class="question title">Question: ' + data[i].title + '</h4><div class="question hidden">' + data[i].body + '</div>';
-    for (var j = 0; j < data[i].answers.length; j++) {
-      if (data[i].answers[j].is_accepted) {
-        html += '<div class="answer hidden"><hr><h4>Answer <img class="checkmark" src="http://' + host + '/checkmark.gif"><span class="votes">Votes: ' + data[i].answers[j].score + '</span></h4>' + data[i].answers[j].body + '</h4></div>';
-      } else {
-        html += '<div class="answer hidden"><hr><h4>Answer <span class="votes">Votes: ' + data[i].answers[j].score + '</span></h4>' + data[i].answers[j].body + '</h4></div>';
+    if (data[i].answers) {
+      for (var j = 0; j < data[i].answers.length; j++) {
+        if (data[i].answers[j].is_accepted) {
+          html += '<div class="answer hidden"><hr><h4>Answer <img class="checkmark" src="http://' + host + '/checkmark.gif"><span class="votes">Votes: ' + data[i].answers[j].score + '</span></h4>' + data[i].answers[j].body + '</h4></div>';
+        } else {
+          html += '<div class="answer hidden"><hr><h4>Answer <span class="votes">Votes: ' + data[i].answers[j].score + '</span></h4>' + data[i].answers[j].body + '</h4></div>';
 
+        }
       }
     }
     html += '</div>';
@@ -36,7 +39,6 @@ var generateContents = function(req, html, data) {
       html += '<hr>';
     }
   }
-
   // end fluid container div
   html += '</div>';
 

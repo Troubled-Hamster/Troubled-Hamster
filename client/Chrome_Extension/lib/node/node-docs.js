@@ -6,6 +6,10 @@ $(function (){
     // in node, they are h2 and h3 elements
     var headers = $('h2, h3');
 
+    headers.each(function() {
+      $(this).nextUntil('h2, h3').andSelf().wrapAll('<div class="flockdocs" />');
+    });
+
     // function that handles mouse-enter event
     var displayButton = function() {
       // get hamster's image and create img element
@@ -17,7 +21,7 @@ $(function (){
       });
       // display iframe when clicking this image
       $img.click(displayIframe.bind(null, $(this)));
-      $(this).append($img);
+      $(this).find('.mark').after($img);
     };
 
     // function that handles mouse-leave event
@@ -30,7 +34,7 @@ $(function (){
     };
 
     // for parent of the header element, add mouse-enter and mouse-leave event
-    headers.each(function() {
+    $('.flockdocs').each(function() {
       // filter out elements that doesn't have a span element (e.g. Table of Contents)
       if($(this).find('span')[0]) {
         // display button on mouse-enter and remove button on mouse-leave
@@ -43,15 +47,16 @@ $(function (){
       // get method name
       var method;
       // if method has open paren, splitting with open paren is same as original innerHTML
-      if (headerParent[0].innerHTML === headerParent[0].innerHTML.split('(')[0]) {
+      var methodHeader = headerParent.find('h2, h3')[0].innerHTML;
+      if (methodHeader === methodHeader.split('(')[0]) {
         // because we don't have open paren, split with open carrot (start of span tag)
-        method = headerParent[0].innerHTML.split('<')[0];
+        method = methodHeader.split('<')[0];
       } else {
         // we have open paren, so split with it
-        method = headerParent[0].innerHTML.split('(')[0];
+        method = methodHeader.split('(')[0];
       }
       // scrape off the white space to attach it to iframe as a class
-      var methodClassName = method.replace(/ /g, '');
+      var methodClassName = method.replace(/ |'/g, '');
       console.log('title: ', title, ' method: ', method);
       // if this iframe doesn't exist, do the following
       if (!$('.crowd-docs-' + methodClassName)[0]) {
@@ -71,7 +76,7 @@ $(function (){
         // create iframe with following components and add it to draggable div
         var iframeWidth = 400;
         var $iframe = createIframe({
-          src: 'http://flockdocs-dev.elasticbeanstalk.com/api/methods/Backbone.js/Model-extend',
+          src: 'http://localhost:3000/api/methods/' + title + '/' + method,
           class: methodClassName,
           width: iframeWidth,
           height: $(window).height(),
