@@ -53,8 +53,6 @@ $(function (){
       var method;
       // if method has no open paren, splitting with open paren is same as original innerHTML
       var methodHeader = headerParent.find('h2, h3')[0].innerHTML;
-      console.log(methodHeader);
-      console.log(methodHeader.split('(')[0]);
       if (methodHeader === methodHeader.split('(')[0]) {
         // because we don't have open paren, split with open carrot (start of span tag)
         method = methodHeader.split('<')[0];
@@ -64,7 +62,6 @@ $(function (){
       }
       // scrape off the white space to attach it to iframe as a class
       var methodClassName = method.replace(/ |'|\./g, '');
-      console.log('title: ', title, ' method: ', method);
       // if this iframe doesn't exist, do the following
       if (!$('.crowd-docs-' + methodClassName)[0]) {
         // get existing iframe and remove it from the DOM
