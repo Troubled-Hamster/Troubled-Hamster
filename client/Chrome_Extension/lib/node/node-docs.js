@@ -6,7 +6,6 @@ $(function (){
     // in node, they are h2 and h3 elements
     var headers = $('h2, h3');
 
-    var apicontents = $('#apicontent').children();
     headers.each(function() {
       $(this).nextUntil('h2, h3').andSelf().wrapAll('<div class="flockdocs" />');
     });
@@ -22,7 +21,7 @@ $(function (){
       });
       // display iframe when clicking this image
       $img.click(displayIframe.bind(null, $(this)));
-      $(this).find('.mark').append($img);
+      $(this).find('.mark').after($img);
     };
 
     // function that handles mouse-leave event
@@ -48,12 +47,13 @@ $(function (){
       // get method name
       var method;
       // if method has open paren, splitting with open paren is same as original innerHTML
-      if (headerParent[0].innerHTML === headerParent[0].innerHTML.split('(')[0]) {
+      var methodHeader = headerParent.find('h2, h3')[0].innerHTML;
+      if (methodHeader === methodHeader.split('(')[0]) {
         // because we don't have open paren, split with open carrot (start of span tag)
-        method = headerParent[0].innerHTML.split('<')[0];
+        method = methodHeader.split('<')[0];
       } else {
         // we have open paren, so split with it
-        method = headerParent[0].innerHTML.split('(')[0];
+        method = methodHeader.split('(')[0];
       }
       // scrape off the white space to attach it to iframe as a class
       var methodClassName = method.replace(/ |'/g, '');
