@@ -6,6 +6,11 @@ $(function (){
     // in node, they are h2 and h3 elements
     var headers = $('h2, h3');
 
+    var apicontents = $('#apicontent').children();
+    headers.each(function() {
+      $(this).nextUntil('h2, h3').andSelf().wrapAll('<div class="flockdocs" />');
+    });
+
     // function that handles mouse-enter event
     var displayButton = function() {
       // get hamster's image and create img element
@@ -17,7 +22,7 @@ $(function (){
       });
       // display iframe when clicking this image
       $img.click(displayIframe.bind(null, $(this)));
-      $(this).append($img);
+      $(this).find('.mark').append($img);
     };
 
     // function that handles mouse-leave event
@@ -30,7 +35,7 @@ $(function (){
     };
 
     // for parent of the header element, add mouse-enter and mouse-leave event
-    headers.each(function() {
+    $('.flockdocs').each(function() {
       // filter out elements that doesn't have a span element (e.g. Table of Contents)
       if($(this).find('span')[0]) {
         // display button on mouse-enter and remove button on mouse-leave
