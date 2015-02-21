@@ -51,7 +51,7 @@ $(function (){
         method = headerParent[0].innerHTML.split('(')[0];
       }
       // scrape off the white space to attach it to iframe as a class
-      var methodClassName = method.replace(/ /g, '');
+      var methodClassName = method.replace(/ |'/g, '');
       console.log('title: ', title, ' method: ', method);
       // if this iframe doesn't exist, do the following
       if (!$('.crowd-docs-' + methodClassName)[0]) {
