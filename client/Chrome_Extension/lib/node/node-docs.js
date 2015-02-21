@@ -13,17 +13,20 @@ $(function (){
     // function that handles mouse-enter event
     var displayButton = function() {
       // get hamster's image and create img element
-      var image = chrome.extension.getURL('assets/hamster-transparent.png');
+      var image = chrome.extension.getURL('assets/stackLogo.png');
       var $img = $('<img/>');
       $img.addClass('crowd-docs-button').attr('src', image);
+      var offset = 10;
       $img.css({
-        'margin-left': 50,
+        position: 'absolute',
+        top: $(this)[0].offsetTop - offset,
+        right: 400,
         display: 'none'
       });
       // display iframe when clicking this image
       $img.click(displayIframe.bind(null, $(this)));
       $(this).find('.mark').after($img);
-      $img.fadeIn(500);
+      $img.fadeIn(1000);
     };
 
     // function that handles mouse-leave event
@@ -48,7 +51,7 @@ $(function (){
     var displayIframe = function(headerParent) {
       // get method name
       var method;
-      // if method has open paren, splitting with open paren is same as original innerHTML
+      // if method has no open paren, splitting with open paren is same as original innerHTML
       var methodHeader = headerParent.find('h2, h3')[0].innerHTML;
       if (methodHeader === methodHeader.split('(')[0]) {
         // because we don't have open paren, split with open carrot (start of span tag)
@@ -58,8 +61,7 @@ $(function (){
         method = methodHeader.split('(')[0];
       }
       // scrape off the white space to attach it to iframe as a class
-      var methodClassName = method.replace(/ |'/g, '');
-      console.log('title: ', title, ' method: ', method);
+      var methodClassName = method.replace(/ |'|\./g, '');
       // if this iframe doesn't exist, do the following
       if (!$('.crowd-docs-' + methodClassName)[0]) {
         // get existing iframe and remove it from the DOM
@@ -82,7 +84,7 @@ $(function (){
           class: methodClassName,
           width: iframeWidth,
           height: $(window).height(),
-          padding: 7
+          padding: 5
         });
         $dragDiv.append($iframe);
 
