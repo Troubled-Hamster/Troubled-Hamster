@@ -17,11 +17,13 @@ $(function (){
       var $img = $('<img/>');
       $img.addClass('crowd-docs-button').attr('src', image);
       $img.css({
-        'margin-left': 20
+        'margin-left': 50,
+        display: 'none'
       });
       // display iframe when clicking this image
       $img.click(displayIframe.bind(null, $(this)));
       $(this).find('.mark').after($img);
+      $img.fadeIn(500);
     };
 
     // function that handles mouse-leave event
@@ -76,11 +78,11 @@ $(function (){
         // create iframe with following components and add it to draggable div
         var iframeWidth = 400;
         var $iframe = createIframe({
-          src: 'http://localhost:3000/api/methods/' + title + '/' + method,
+          src: 'http://flockdocs-dev.elasticbeanstalk.com/api/methods/' + title + '/' + method,
           class: methodClassName,
           width: iframeWidth,
           height: $(window).height(),
-          padding: 5
+          padding: 7
         });
         $dragDiv.append($iframe);
 
