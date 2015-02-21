@@ -4,6 +4,34 @@ $(function (){
     return isNaN(parseInt(this.innerHTML.substring(0, 1)));
   });
 
+  //wrap sections in flockdocs divs
+  var docElements = $('#documentation').children();
+  var startIndex = undefined;
+  var endIndex;
+  docElements.each(function(index, element) {
+    var tag = element.nodeName;
+    var id = element.getAttribute('id');
+    if(startIndex === undefined) {
+      if(tag === 'PRE' || tag === 'P') {
+         startIndex = index;      
+      }
+    } else if (id && (tag === 'PRE' || tag === 'P')) {
+        endIndex = index;
+        var $wrapped = docElements.slice(startIndex,endIndex).wrapAll( "<div class='flockdocs' style='display:table-row;'><div style='display:table-cell;'></div></div>");
+        startIndex = index;
+    } else if (tag !== 'PRE' && tag !== 'P') {
+        endIndex = index;
+        docElements.slice(startIndex,endIndex).wrapAll( "<div class='flockdocs' />");
+        startIndex = undefined;
+    }
+
+    // console.log(tag + ' ' + id + ' ' + startIndex + ' ' + endIndex);
+
+    if (id === 'faq' || id === 'links') {
+      return false; // breaks from the each loop
+    }
+  });
+
   // add position:relative css property to the container
   if ($('.container').css('position') !== 'relative') {
     $('.container').css('position', 'relative');
@@ -12,45 +40,52 @@ $(function (){
   // handles mouse-enter event
   var displayButton = function() {
     // position in which we append the button
-    var appendPosition;
+    var $appendPosition = $(this);
+
+    var height = 0;
+    $appendPosition.children().each(function(index, element) {
+      height += $(element).height();
+    });
+    // console.log(height);
     // if alias exists, use that as appending position
-    if ($(this).children('.alias')[0]) {
-      appendPosition = $(this).children('.alias');
-    // else use code as appending position
-    } else {
-      appendPosition = $(this).children('code');
-    }
+    // if ($(this).children('.alias')[0]) {
+    //   $appendPosition = $(this).children('.alias');
+    // // else use code as appending position
+    // } else {
+    //   $appendPosition = $(this).children('code');
+    // }
     // if either one of alias or code exist, append the button
-    if (appendPosition) {
+    if ($appendPosition) {
       // create button and add class & onclick event
-      var image = chrome.extension.getURL('assets/hamster-transparent.png');
+      var image = chrome.extension.getURL('assets/stackLogo.png');
       var $img = $('<img/>');
       $img.addClass('crowd-docs-button').attr('src', image);
       $img.css({
-        'margin-left': 20
+        position: 'relative',
+        // left: '100px',
+        // top: 
+        // top: '-25px'
+        // left: '20px',
       });
-      $img.click(displayIframe.bind(null, $(this)));
-      appendPosition.after($img);
+      $appendPosition.append($img);
+      $img.wrapAll("<div style='display:table-cell;vertical-align:middle;' class='crowd-docs-button-div' />")
     }
   };
   // handles mouse-leave event
   var removeButton = function() {
     // select existing button in the DOM and remove it
-    var existingButton = $(this).children('.crowd-docs-button')[0];
+    var existingButton = $(this).children('.crowd-docs-button-div')[0];
     if (existingButton) {
       existingButton.remove();
     }
   };
 
-  // for parent of the header element, add mouse-enter and mouse-leave event
-  headers.each(function() {
-    $(this).parent().hover(displayButton, removeButton);
-  });
-
-  var displayIframe = function(headerParent) {
+  var displayIframe = function($section) {
+    console.dir($section);
     // method and library title that we are using to search in stackoverflow API / comments
     var title = $('title')[0].innerHTML;
-    var method = headerParent[0].id;
+    var $firstParagraph = $section.children().first().children().first();
+    var method = $firstParagraph.attr('id');
     // select existing iframe
     var $existingIframe = $('iframe')[0];
     // spam check
@@ -61,8 +96,8 @@ $(function (){
         $('.remove').remove();
       }
       // position of iframe to be inserted
-      var offsetTop = headerParent[0].offsetTop;
-      var offsetWidth = headerParent[0].offsetWidth;
+      var offsetTop = $firstParagraph[0].offsetTop;
+      var offsetWidth = $firstParagraph[0].offsetWidth;
 
       var $dragDiv = $('<div/>');
       $dragDiv.addClass('drag');
@@ -126,4 +161,10 @@ $(function (){
       $('.drag').css('z-index', '10000');
     }
   };
+
+  // for parent of the header element, add mouse-enter and mouse-leave event
+  $('.flockdocs').each(function() {
+    $(this).hover(displayButton, removeButton);
+    $(this).click(displayIframe.bind(null, $(this)));
+  }); 
 });
