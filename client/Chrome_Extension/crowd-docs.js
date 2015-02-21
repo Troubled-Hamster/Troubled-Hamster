@@ -102,11 +102,11 @@ $(function (){
       // add a button next to the iframe to remove it
       var $button = $('<button/>');
       $button.addClass('remove');
-      var buttonOffset = 20;
+      var buttonOffset = 5;
       var buttonStyles = {
         position: 'absolute',
         top: offsetTop,
-        left: offsetWidth + offset - buttonOffset
+        left: offsetWidth + offset + iFrameWidth - buttonOffset
       };
       $button.css(buttonStyles);
       $button.text('x');
