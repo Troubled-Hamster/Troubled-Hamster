@@ -71,7 +71,7 @@ $(function (){
         // create iframe with following components and add it to draggable div
         var iframeWidth = 400;
         var $iframe = createIframe({
-          src: 'http://flockdocs-dev.elasticbeanstalk.com/api/methods/Backbone.js/Model-extend',
+          src: 'http://localhost:3000/api/methods/' + title + '/' + method,
           class: methodClassName,
           width: iframeWidth,
           height: $(window).height(),
