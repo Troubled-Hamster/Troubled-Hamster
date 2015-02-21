@@ -1,9 +1,22 @@
 var jsdom = require('jsdom');
 var fs = require('fs');
+var mongoose = require('mongoose');
+var Library = require('../server/libraries/libraryModel.js');
+
 
 var libraryURLs = ['http://backbonejs.org/', 'http://underscorejs.org/', 'http://nodejs.org/api/all.html'];
 var jQueryCDNURL = 'http://code.jquery.com/jquery-1.11.2.min.js';
 
+
+var user = process.env.mongo_lab_user;
+var password = process.env.mongo_lab_password;
+if(user) { //assume prod if mongo_lab_user is set
+  mongoose.connect('mongodb://'+user+':'+password+'@ds045531.mongolab.com:45531/flockdocs'); // connect to mongo database named flockdocs
+  console.log('mongoose listening remotely');
+} else {
+  mongoose.connect('mongodb://localhost/flockdocs');
+  console.log('mongoose listening locally');
+}
 // This function takes an URL and:
 // 1. Retrieves the html document from the URL
 // 2. Gets the library name (title of HTML page)
@@ -55,6 +68,13 @@ var getLibraryMethods = function(url){
         });
       }
 
+      Library.create(libraryCollection).then(function(lib, err){
+        if (err) {
+          console.log('error!');
+        } else {
+          console.log('Libraries saved!');
+        }
+      });
       // Write the library collection to a file
       // var fileName = './server/libraries/supportedlibraries/' + libraryCollection.name + '.json';
       // fs.writeFile(fileName, JSON.stringify(libraryCollection), function(err){
@@ -63,6 +83,10 @@ var getLibraryMethods = function(url){
       // })
     });
 };
+
+Library.remove({}).exec().then(function(numRemoved) {
+  console.log('Libraries collection cleared. ' + numRemoved + ' documents removed.');
+});
 
 // Create files for each library
 for(var i = 0; i < libraryURLs.length; i++){
