@@ -99,9 +99,12 @@ var getStackOverflowData = function(libraryName, method) {
           // console.dir(data.items);
           var sortedQuestions = [];
           for(var i=0; i<questionIDs.length;i++) {
-            sortedQuestions.push(_.find(data.items,function(item) {
+           var dataItem = _.find(data.items,function(item) {
               return item.question_id === questionIDs[i];
-            }));
+            });
+            if(dataItem) {
+              sortedQuestions.push(dataItem);
+            }
           }
 
           data.items = sortedQuestions;
