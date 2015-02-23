@@ -4,31 +4,50 @@ $(function (){
     return isNaN(parseInt(this.innerHTML.substring(0, 1)));
   });
 
+  var title = $('title')[0].innerHTML;
+
   //wrap sections in flockdocs divs
-  var docElements = $('#documentation').children();
+  var docElements;
+  if (title === 'Underscore.js') {
+    docElements = $('#documentation').children();
+    var inAPIDocs = true;
+  } else {
+    docElements = $('.container').children();
+    var inAPIDocs = false;
+  }
   var startIndex = undefined;
   var endIndex;
+
+  var wrapWithFlockdocs = function() {
+    docElements.slice(startIndex,endIndex).wrapAll( "<div class='flockdocs'  style='display:table-row;'><div style='display:table-cell'></div></div>");
+  }
+
   docElements.each(function(index, element) {
     var tag = element.nodeName;
     var id = element.getAttribute('id');
-    if(startIndex === undefined) {
-      if(tag === 'PRE' || tag === 'P') {
-         startIndex = index;      
+
+    if(inAPIDocs) {
+      if(startIndex === undefined) {
+        if(id && (tag === 'PRE' || tag === 'P')) {
+           startIndex = index;      
+        } 
+      } else if (id && (tag === 'PRE' || tag === 'P')) {
+          endIndex = index;
+          wrapWithFlockdocs();
+          startIndex = index;
+      } else if (tag !== 'PRE' && tag !== 'P') {
+          endIndex = index;
+          wrapWithFlockdocs();
+          startIndex = undefined;
       }
-    } else if (id && (tag === 'PRE' || tag === 'P')) {
-        endIndex = index;
-        var $wrapped = docElements.slice(startIndex,endIndex).wrapAll( "<div class='flockdocs' style='display:table-row;'><div style='display:table-cell;'></div></div>");
-        startIndex = index;
-    } else if (tag !== 'PRE' && tag !== 'P') {
-        endIndex = index;
-        docElements.slice(startIndex,endIndex).wrapAll( "<div class='flockdocs' />");
-        startIndex = undefined;
-    }
 
-    // console.log(tag + ' ' + id + ' ' + startIndex + ' ' + endIndex);
-
-    if (id === 'faq' || id === 'links') {
-      return false; // breaks from the each loop
+      if (id === 'faq' || id === 'links') {
+        return false; // breaks from the each loop
+      }
+    } else {
+      if(tag === 'H2' && id === 'Events') {
+        inAPIDocs = true;
+      }
     }
   });
 
@@ -62,13 +81,13 @@ $(function (){
       $img.addClass('crowd-docs-button').attr('src', image);
       $img.css({
         position: 'relative',
-        // left: '100px',
-        // top: 
-        // top: '-25px'
-        // left: '20px',
+        display: 'none',
+        top: '12px',
+        left: '-120px',
       });
       $appendPosition.append($img);
-      $img.wrapAll("<div style='display:table-cell;vertical-align:middle;' class='crowd-docs-button-div' />")
+      $img.wrapAll("<div style='display:table-cell;vertical-align:top;' class='crowd-docs-button-div' />")
+      $img.fadeIn(1000);
     }
   };
   // handles mouse-leave event
@@ -83,7 +102,6 @@ $(function (){
   var displayIframe = function($section) {
     console.dir($section);
     // method and library title that we are using to search in stackoverflow API / comments
-    var title = $('title')[0].innerHTML;
     var $firstParagraph = $section.children().first().children().first();
     var method = $firstParagraph.attr('id');
     // select existing iframe
