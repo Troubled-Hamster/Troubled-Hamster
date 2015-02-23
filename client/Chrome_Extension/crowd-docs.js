@@ -79,11 +79,17 @@ $(function (){
       var image = chrome.extension.getURL('assets/stackLogo.png');
       var $img = $('<img/>');
       $img.addClass('crowd-docs-button').attr('src', image);
+      var leftOffset;
+      if(title === 'Underscore.js') {
+        leftOffset = '-120px';
+      } else {
+        leftOffset = '0px';
+      }
       $img.css({
         position: 'relative',
         display: 'none',
         top: '12px',
-        left: '-120px',
+        left: leftOffset,
       });
       $appendPosition.append($img);
       $img.wrapAll("<div style='display:table-cell;vertical-align:top;' class='crowd-docs-button-div' />")
