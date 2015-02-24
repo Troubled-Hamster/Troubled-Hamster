@@ -1,4 +1,5 @@
 var annotationHTMLGenerator = require('./annotationHTMLGenerator.js');
+var Method = require('../methods/methodModel.js');
 
 module.exports = {
 
