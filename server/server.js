@@ -15,9 +15,6 @@ if(user) { //assume prod if mongo_lab_user is set
 // configure our server with all the middleware and and routing
 require('./middleware.js')(app, express);
 
-// imports all libraries in library directory into mongo
-require('./libraries/libraryController.js'); 
-
 app.listen(port);
 console.log('Server listening on ' + port);
 
