@@ -19,8 +19,8 @@ $(function (){
       var offset = 10;
       $img.css({
         position: 'absolute',
-        top: $(this)[0].offsetTop - offset,
-        right: 400,
+        // top: $(this)[0].offsetTop - offset,
+        // left: '385px',
         display: 'none'
       });
       // display iframe when clicking this image

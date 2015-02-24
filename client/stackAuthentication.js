@@ -10,7 +10,7 @@ $(function(){
       data: {answer: userAnswer}
     });
 
-    var postedAnswer = '<div class="answer"><hr><h4>Answer</h4><p>' + userAnswer + '</p>';
+    var postedAnswer = '<div class="answer"><hr><h4>Comment</h4><p>' + userAnswer + '</p>';
     $('.answers').prepend(postedAnswer);
     $('.userAnswer').val('');
 
