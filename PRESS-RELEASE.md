@@ -39,4 +39,4 @@ Once the project moves into development, the press release can be used as a touc
   > "After countless frustrating experiences, wasting time looking for answers to questions I could barely articulate, I was extremeley relieved to find the path to enlightenment right in the docs I was trying to understand!"
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Check out our website for some examples of how we can spruce up your page www.ilovedocs.com

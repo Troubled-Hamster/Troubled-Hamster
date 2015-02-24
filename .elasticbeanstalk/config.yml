@@ -1,0 +1,10 @@
+branch-defaults:
+  feat/annotations:
+    environment: flockDocs-dev
+global:
+  application_name: Flock Docs
+  default_ec2_keyname: hamster
+  default_platform: 64bit Amazon Linux 2014.09 v1.1.0 running Node.js
+  default_region: us-west-2
+  profile: eb-cli
+  sc: git

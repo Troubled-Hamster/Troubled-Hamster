@@ -1,0 +1,35 @@
+code {
+  white-space: pre;
+  word-wrap: normal;
+  word-break: break-all;
+}
+
+body {
+  padding-top: 60px;
+}
+
+.navbar-fixed-top {
+  background-color: #E6E6E6;
+}
+
+.votes {
+  float: right;
+}
+
+.checkmark {
+  margin-bottom: 5px;
+}
+
+.question {
+  padding: 10px;
+  background-color: #FFF8DC;
+}
+
+.hidden {
+  display: none;
+}
+
+.selected {
+  /*border: 1px solid black;*/
+  background-color: #CCFFCC;
+}

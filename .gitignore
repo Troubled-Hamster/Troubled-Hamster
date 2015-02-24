@@ -4,3 +4,13 @@ bower_components/
 
 build/
 dist/
+
+.DS_Store
+
+server/libraries/supportedLibraries/*
+!server/libraries/supportedLibraries/.emptyDir
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
