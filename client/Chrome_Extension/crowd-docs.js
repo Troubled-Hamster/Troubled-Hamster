@@ -1,8 +1,4 @@
 $(function (){
-  // filter out change logs
-  var headers = $('.header').filter(function(index) {
-    return isNaN(parseInt(this.innerHTML.substring(0, 1)));
-  });
 
   var title = $('title')[0].innerHTML;
 

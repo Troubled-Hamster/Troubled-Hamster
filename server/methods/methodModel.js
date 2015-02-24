@@ -10,7 +10,8 @@ var MethodSchema = new mongoose.Schema({
     required: true,
   },
   topQuestions: [{}],
-  docHelp: []
+  comments: [],
+  documentationHTML: String
 
 });
 

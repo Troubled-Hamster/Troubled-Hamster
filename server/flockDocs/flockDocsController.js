@@ -10,7 +10,7 @@ module.exports = {
       if(!method) {
         commentHTMLGenerator.generateHTML(req, res, []);
       } else {
-        commentHTMLGenerator.generateHTML(req, res, method.docHelp);
+        commentHTMLGenerator.generateHTML(req, res, method.comments);
       }
       res.end();
     });
@@ -23,7 +23,7 @@ module.exports = {
     Method.findOne({name: methodName, library: libraryName})
     .exec().then(function(method) {
       if (!method) {
-        Method.create({name: methodName, library: libraryName, docHelp: [answer]}).then(function(err, method){
+        Method.create({name: methodName, library: libraryName, comments: [answer]}).then(function(err, method){
           if (err){
             res.send(err);
           } else {
@@ -32,7 +32,7 @@ module.exports = {
         });
         // res.send("Sorry, this method doesn't exist!");
       } else {
-        method.docHelp.push(answer);
+        method.comments.push(answer);
         method.save(function(err, method) {
           if (err) {
             console.log('error!')
