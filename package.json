@@ -34,6 +34,8 @@
     "morgan": "^1.1.1",
     "node-bing-api": "^0.1.7",
     "passport": "^0.2.0",
+    "react": "^0.12.2",
+    "reactify": "^1.0.0",
     "request": "^2.36.0",
     "underscore": "^1.7.0"
   }
