@@ -37,6 +37,7 @@
     "react": "^0.12.2",
     "reactify": "^1.0.0",
     "request": "^2.36.0",
+    "superagent": "^0.21.0",
     "underscore": "^1.7.0"
   }
 }
