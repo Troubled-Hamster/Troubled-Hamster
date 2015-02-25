@@ -1,9 +1,11 @@
+$(document).ready(function() {
+  
+  var React = require('react');
+  var App = require('./components/App');
 
-var React = require('react');
+  React.render(
+    <App />,
+    document.body
+  );
 
-var App = require('./components/App');
-
-React.render(
-  <App />,
-  document.body
-);
+});
