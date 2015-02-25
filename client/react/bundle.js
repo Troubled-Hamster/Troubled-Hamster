@@ -37,7 +37,7 @@ module.exports = App;
 var Documentation = React.createClass({displayName: "Documentation",
   render: function() {
     return (
-      React.createElement("div", null, this.props.library)
+      React.createElement("div", {className: "documentation"}, this.props.library)
     );
   }
 });
@@ -62,7 +62,7 @@ var Examples = require('./Examples');
 var Resources = React.createClass({displayName: "Resources",
   render: function(){
     return (
-      React.createElement("div", {className: "Resources"}, 
+      React.createElement("div", {className: "resources"}, 
         React.createElement("h1", null, this.props.method), 
         React.createElement(StackOverflow, {method: this.props.method}), 
         React.createElement(Examples, {method: this.props.method})
