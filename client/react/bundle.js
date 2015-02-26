@@ -26,9 +26,9 @@ var App = React.createClass({displayName: "App",
 
   render: function(){
     return (
-      React.createElement("div", {className: "app"}, 
-        React.createElement(Sidebar, {libraries: this.state.libraries}), 
-        React.createElement(Documentation, {library: this.state.library, methods: this.state.methods}), 
+      React.createElement("div", {className: "app"},
+        React.createElement(Sidebar, {libraries: this.state.libraries}),
+        React.createElement(Documentation, {library: this.state.library, methods: this.state.methods}),
         React.createElement(Resources, {method: this.state.method})
       )
     );
@@ -52,9 +52,9 @@ var Documentation = React.createClass({displayName: "Documentation",
       );
     });
     return (
-      React.createElement("div", {className: "documentation"}, 
-        this.props.library, 
-        React.createElement("ul", {className: "methods"}, 
+      React.createElement("div", {className: "documentation"},
+        this.props.library,
+        React.createElement("ul", {className: "methods"},
           methodNodes
         )
       )
@@ -90,12 +90,12 @@ var Examples = React.createClass({displayName: "Examples",
       );
     });
     return (
-      React.createElement("div", {className: "Sidebar"}, 
-      React.createElement("h1", null, "CODE EXAMPLES"), 
+      React.createElement("div", {className: "Sidebar"},
+      React.createElement("h1", null, "CODE EXAMPLES"),
         exampleNodes
       )
     );
-  }, 
+  },
 
   _onChange: function() {
     this.setState(ExampleStore.getExamples());
@@ -112,10 +112,17 @@ var Examples = require('./Examples');
 var Resources = React.createClass({displayName: "Resources",
   render: function(){
     return (
-      React.createElement("div", {className: "resources"}, 
-        React.createElement("h1", null, this.props.method), 
-        React.createElement(StackOverflow, null), 
+<<<<<<< HEAD
+      React.createElement("div", {className: "resources"},
+        React.createElement("h1", null, this.props.method),
+        React.createElement(StackOverflow, null),
         React.createElement(Examples, null)
+=======
+      React.createElement("div", {className: "resources"},
+        React.createElement("h1", null, this.props.method),
+        React.createElement(StackOverflow, {method: this.props.method}),
+        React.createElement(Examples, {method: this.props.method})
+>>>>>>> (feat) added framework for sidebar
       )
     );
   }
@@ -132,9 +139,9 @@ var Sidebar = React.createClass({displayName: "Sidebar",
       );
     });
     return (
-      React.createElement("div", {className: "Sidebar"}, 
-        React.createElement("h1", null, "Libraries"), 
-        React.createElement("ul", {className: "LibraryList"}, 
+      React.createElement("div", {className: "Sidebar"},
+        React.createElement("h1", null, "Libraries"),
+        React.createElement("ul", {className: "LibraryList"},
           libraryNodes
         )
       )
@@ -168,15 +175,15 @@ var StackOverflow = React.createClass({displayName: "StackOverflow",
   render: function(){
     var stackQAs = this.state.items.map(function(question){
       return (
-        React.createElement("div", null, 
-        React.createElement("h1", {className: "title"}, question.title), 
-          React.createElement("div", {className: "question hidden"}, question.body), 
+        React.createElement("div", null,
+        React.createElement("h1", {className: "title"}, question.title),
+          React.createElement("div", {className: "question hidden"}, question.body),
           React.createElement("div", {className: "answer hidden"}, question.answers)
         )
       );
     });
     return (
-      React.createElement("div", {className: "StackOverflow"}, 
+      React.createElement("div", {className: "StackOverflow"},
         stackQAs
       )
     );
@@ -204,7 +211,7 @@ var Dispatcher = require('./dispatcher.js');
 var assign = require('object-assign');
 
 var AppDispatcher = assign({}, Dispatcher.prototype, {
-  
+
   handleViewAction: function(action) {
     this.dispatch({
       source: 'VIEW_ACTION',
@@ -267,7 +274,7 @@ module.exports = Dispatcher;
 
 },{"es6-promise":14,"object-assign":15}],10:[function(require,module,exports){
 $(document).ready(function() {
-  
+
   var React = require('react');
   var App = require('./components/App');
 
@@ -289,7 +296,7 @@ var Constants = require('../constants/constants')
 var CHANGE_EVENT = 'change';
 
 var _selection = {
-  "library" : "Underscore.js", 
+  "library" : "Underscore.js",
   "methods" : [ "each", "map", "reduce", "reduceRight", "find", "filter", "where", "findWhere", "reject", "every", "some", "contains", "invoke", "pluck", "max", "min", "sortBy", "groupBy", "indexBy", "countBy", "shuffle", "sample", "toArray", "size", "partition", "first", "initial", "last", "rest", "compact", "flatten", "without", "union", "intersection", "difference", "uniq", "zip", "unzip", "object", "indexOf", "lastIndexOf", "sortedIndex", "findIndex", "findLastIndex", "range", "bind", "bindAll", "partial", "memoize", "delay", "defer", "throttle", "debounce", "once", "after", "before", "wrap", "negate", "compose", "keys", "allKeys", "values", "mapObject", "pairs", "invert", "object-functions", "findKey", "extend", "extendOwn", "pick", "omit", "defaults", "clone", "tap", "has", "property", "propertyOf", "matcher", "isEqual", "isMatch", "isEmpty", "isElement", "isArray", "isObject", "isArguments", "isFunction", "isString", "isNumber", "isFinite", "isBoolean", "isDate", "isRegExp", "isError", "isNaN", "isNull", "isUndefined", "noConflict", "identity", "constant", "noop", "times", "random", "mixin", "iteratee", "uniqueId", "escape", "unescape", "result", "now", "template", "chain", "value" ],
   "method": "Hello World"
 };
