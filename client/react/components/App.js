@@ -3,9 +3,9 @@ var Documentation = require('./Documentation');
 var Resources = require('./Resources');
 var AppStore = require('../store/AppStore');
 
-var data = ['underscore', 'backbone', 'node'];
-var library = 'iefhqeifweifh';
-var method = '';
+// var data = ['underscore', 'backbone', 'node'];
+// var library = 'iefhqeifweifh';
+// var method = '';
 
 var App = React.createClass({
 
@@ -13,19 +13,30 @@ var App = React.createClass({
 
   getInitialState: function() {
     return AppStore.getSelection();
-      // libraries: data,
-      // library: library,
-      // method: method
+  },
+
+  componentDidMount: function() {
+    AppStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function() {
+    AppStore.removeChangeListener(this._onChange);
   },
 
   render: function(){
     return (
       <div className="app">
         <Sidebar libraries={this.state.libraries} />
-        <Documentation library={this.state.library} />
+        <Documentation library={this.state.library} methods={this.state.methods}/>
+        <Resources method={this.state.method}/>
       </div>
     );
+  },
+
+  _onChange: function() {
+    this.setState(AppStore.getSelection());
   }
+
 });
 
 module.exports = App;
