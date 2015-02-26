@@ -1,0 +1,25 @@
+.app {
+  border: 1px solid black;
+}
+
+.documentation {
+  border: 1px solid orange;
+  width: 60%;
+  float: left;
+}
+
+.sidebar {
+  border: 1px solid green;
+  width: 15%;
+  float: left;
+}
+
+.libraryList {
+  border: 1px solid red;
+}
+
+.resources {
+  border: 1px solid blue;
+  width: 25%;
+  float: left;
+}

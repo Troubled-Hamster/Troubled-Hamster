@@ -1,7 +1,7 @@
 var Documentation = React.createClass({
   render: function() {
     return (
-      <div>{this.props.library}</div>
+      <div className="documentation">{this.props.library}</div>
     );
   }
 });

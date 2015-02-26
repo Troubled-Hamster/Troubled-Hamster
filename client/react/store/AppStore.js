@@ -1,6 +1,8 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
+var Constants = require('../constants/constants')
+
 
 var CHANGE_EVENT = 'change';
 
@@ -38,18 +40,16 @@ var AppStore = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
-    case SELECTED_LIBRARY:
+    case Constants.SELECTED_LIBRARY:
       text = action.text.trim();
-      if(text !== '') {
-        changeLibrary(text);
-      }
+      changeLibrary(text);
+      AppStore.emitChange();
       break;
 
-    case SELECTED_METHOD:
+    case Constants.SELECTED_METHOD:
       text = action.text.trim();
-      if(text !== ''){
-        changeMethod(text);
-      }
+      changeMethod(text);
+      AppStore.emitChange();
       break;
   }
 });
