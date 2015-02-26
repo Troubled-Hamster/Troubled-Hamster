@@ -17,8 +17,8 @@ var Actions = {
       actionType: Constants.SELECTED_METHOD,
       text: methodName
     });
-
     Utils.getStackInfo(libraryName, methodName);
     Utils.getExamples(libraryName, methodName);
   }
+
 }

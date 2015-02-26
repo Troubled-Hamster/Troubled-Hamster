@@ -38,6 +38,7 @@ AppDispatcher.register(function(action) {
       setExamples(action.data);
       ExampleStore.emitChange();
       break;
+    }
 
 });
 
