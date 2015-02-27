@@ -51,4 +51,7 @@ module.exports = function (app, express) {
     res.send(token);
   });
 
+  app.get('/test', function(req, res) {
+    res.sendFile(path.resolve(__dirname + '/../client/react/index.json'))
+  });
 };

@@ -1,8 +1,10 @@
+var Library = require('./Library')
+
 var Sidebar = React.createClass({
   render: function(){
-    var libraryNodes = this.props.libraries.map(function(library){
+    var libraryNodes = this.props.libraryData.map(function(library){
       return (
-        <li>{library}</li>
+        <Library library={library}/>
       );
     });
     return (

@@ -17,6 +17,30 @@ var App = React.createClass({
 
   componentDidMount: function() {
     AppStore.addChangeListener(this._onChange);
+    var libraryData = [];
+    var libraries = this.state.libraries;
+    var len = libraries.length;
+    var context = this;
+    libraries.forEach(function(library, index) {
+      $.ajax({
+        url: 'http://localhost:3000/test',
+        dataType: 'json',
+        success: function(data) {
+          console.log('successfully fetched data for library ', library);
+          libraryData.push({
+            name: library,
+            data: data
+          });
+          context.setState({
+            libraries: libraries,
+            libraryData: libraryData
+          });
+        },
+        error: function(xhr, status, err) {
+          console.error('error getting data for library ', library);
+        }
+      });
+    });
   },
 
   componentWillUnmount: function() {
@@ -26,9 +50,7 @@ var App = React.createClass({
   render: function(){
     return (
       <div className="app">
-        <Sidebar libraries={this.state.libraries} />
-        <Documentation library={this.state.library} methods={this.state.methods}/>
-        <Resources method={this.state.method}/>
+        <Sidebar libraryData={this.state.libraryData} />
       </div>
     );
   },
@@ -40,3 +62,5 @@ var App = React.createClass({
 });
 
 module.exports = App;
+        // <Documentation library={this.state.library} methods={this.state.methods}/>
+        // <Resources method={this.state.method}/>
