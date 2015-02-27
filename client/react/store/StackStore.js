@@ -9,7 +9,7 @@ var CHANGE_EVENT = 'change';
 var _stackData = {};
 
 var setStackData = function(stackData) {
-  _stackData = JSON.parse(stackData);
+  _stackData.questions = JSON.parse(stackData);
 }
 
 var StackStore = assign({}, EventEmitter.prototype, {
@@ -33,9 +33,10 @@ var StackStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(action) {
-  switch(action.actionType) {
+
+  switch(action.action.actionType) {
     case Constants.STACK_DATA_RETRIEVED:
-      setStackData(action.data);
+      setStackData(action.action.data);
       StackStore.emitChange();
       break;
   }

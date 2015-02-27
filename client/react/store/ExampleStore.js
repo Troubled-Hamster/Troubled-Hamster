@@ -33,9 +33,11 @@ var ExampleStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(action) {
-  switch(action.actionType) {
+
+  switch(action.action.actionType) {
     case Constants.EXAMPLES_RETRIEVED:
-      setExamples(action.data);
+      console.log('ExampleStore heard: ' + action.action.actionType);
+      setExamples(action.action.data);
       ExampleStore.emitChange();
       break;
     }

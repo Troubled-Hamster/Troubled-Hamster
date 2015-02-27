@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-  // var React = require('react');
   var App = require('./components/App');
 
   React.render(

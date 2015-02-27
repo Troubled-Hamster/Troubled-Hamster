@@ -7,26 +7,28 @@ var utils = {
     request
       .get('http://localhost:3000/' + libraryName)
       .end(function(err, res){
-        ServerActions.dispatchNewLibrary(res);
+        ServerActions.dispatchNewLibrary(res.body);
       });
   },
 
   getStackInfo: function(libraryName, methodName){
     request
-      .get('http://localhost:3000/api/method/' + libraryName + '/' + methodName)
+      .get('http://localhost:3000/api/methods/' + libraryName + '/' + methodName)
       .end(function(err, res){
-        ServerActions.dispatchNewStackInfo(res);
+        console.dir(res.body.topQuestions);
+        ServerActions.dispatchNewStackInfo(res.body.topQuestions);
       });
   },
 
-  getExamples: function(methodName){
+  getExamples: function(libraryName, methodName){
     request
-      .get('http://localhost:3000/flockdocs' + libraryName + '/' + methodName)
+      .get('http://localhost:3000/flockdocs/' + libraryName + '/' + methodName)
       .end(function(err, res){
-        ServerActions.dispatchNewExamples(res);
+        ServerActions.dispatchNewExamples(res.body.docHelp);
       });
   }
 
 };
 
 module.exports = utils;
+

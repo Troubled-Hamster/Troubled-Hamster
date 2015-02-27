@@ -46,12 +46,14 @@ var AppStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
     case Constants.SELECTED_LIBRARY:
+      console.log('store heard: ' + Constants.SELECTED_LIBRARY);
       text = action.text.trim();
       changeLibrary(text);
       AppStore.emitChange();
       break;
 
     case Constants.SELECTED_METHOD:
+      console.log('store heard: ' + Constants.SELECTED_METHOD);
       text = action.text.trim();
       changeMethod(text);
       AppStore.emitChange();

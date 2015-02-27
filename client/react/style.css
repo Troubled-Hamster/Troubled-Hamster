@@ -8,6 +8,10 @@
   float: left;
 }
 
+.examples {
+  border: 1px solid purple;
+}
+
 .sidebar {
   border: 1px solid green;
   width: 15%;
@@ -22,4 +26,8 @@
   border: 1px solid blue;
   width: 25%;
   float: left;
+}
+
+.stack {
+  border: 1px solid yellow;
 }
