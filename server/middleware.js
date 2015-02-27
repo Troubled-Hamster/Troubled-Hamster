@@ -17,7 +17,7 @@ module.exports = function (app, express) {
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
-  app.use(express.static(__dirname + '/../client/react'));
+  app.use(express.static(__dirname + '/../client'));
 
   app.use('/api/methods', methodRouter); // use method router for all method requests
   app.use('/flockdocs', flockDocsRouter);
@@ -49,9 +49,5 @@ module.exports = function (app, express) {
       'ttl': ttl
     }, secret);
     res.send(token);
-  });
-
-  app.get('/test', function(req, res) {
-    res.sendFile(path.resolve(__dirname + '/../client/react/index.json'))
   });
 };
