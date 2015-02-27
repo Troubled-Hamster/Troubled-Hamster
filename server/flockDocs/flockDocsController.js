@@ -7,11 +7,11 @@ module.exports = {
     var methodName = req.params.method;
     Method.findOne({name: methodName, library: libraryName})
     .exec().then(function(method) {
-      // if(!method) {
-      //   commentHTMLGenerator.generateHTML(req, res, []);
-      // } else {
-      //   commentHTMLGenerator.generateHTML(req, res, method.comments);
-      // }
+      if(!method) {
+        commentHTMLGenerator.generateHTML(req, res, []);
+      } else {
+        commentHTMLGenerator.generateHTML(req, res, method.comments);
+      }
       res.send(method);
     });
   },
