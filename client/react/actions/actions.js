@@ -1,4 +1,4 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
+var AppDispatcher = require('../dispatcher/appDispatcher');
 var Utils = require('../utils/utils');
 var Constants = require('../constants/constants')
 
@@ -22,3 +22,5 @@ var Actions = {
   }
 
 }
+
+module.exports = Actions

@@ -33,9 +33,11 @@ var StackStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(action) {
-  switch(action.actionType) {
+
+  switch(action.action.actionType) {
     case Constants.STACK_DATA_RETRIEVED:
-      setStackData(action.data);
+      console.log(action.action.data);
+      setStackData(action.action.data);
       StackStore.emitChange();
       break;
   }

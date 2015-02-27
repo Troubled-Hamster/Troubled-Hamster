@@ -4,8 +4,8 @@ var StackOverflow = React.createClass({
 
   getInitialState: function() {
     return {items: [{
-      title: 'CLICK ON A METHOD TO SEE STACK OVERFLOW CONTENT',
-      body: '',
+      title: '',
+      body: 'CLICK ON A METHOD TO SEE STACK OVERFLOW CONTENT',
       answers: ''
     }]}
   },
@@ -21,7 +21,7 @@ var StackOverflow = React.createClass({
   render: function(){
     var stackQAs = this.state.items.map(function(question){
       return (
-        <div>
+        <div className="stack">
         <h1 className="title">{question.title}</h1>
           <div className="question hidden">{question.body}</div>
           <div className="answer hidden">{question.answers}</div>
@@ -36,7 +36,7 @@ var StackOverflow = React.createClass({
   },
 
   _onChange: function() {
-    this.setState(AppStore.getStackData());
+    this.setState(StackStore.getStackData());
   }
 
 });

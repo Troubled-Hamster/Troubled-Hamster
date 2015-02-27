@@ -22,6 +22,7 @@ Dispatcher.prototype = assign({}, Dispatcher.prototype, {
    * @param  {object} payload The data from the action.
    */
   dispatch: function(payload) {
+
     // First create array of promises for callbacks to reference.
     var resolves = [];
     var rejects = [];

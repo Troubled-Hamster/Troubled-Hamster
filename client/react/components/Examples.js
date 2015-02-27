@@ -23,7 +23,7 @@ var Examples = React.createClass({
       );
     });
     return (
-      <div className="Sidebar">
+      <div className="examples">
       <h1>CODE EXAMPLES</h1>
         {exampleNodes}
       </div>
