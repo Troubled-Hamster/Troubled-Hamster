@@ -25,8 +25,8 @@ $(function (){
     if(inAPIDocs) {
       if(startIndex === undefined) {
         if(id && (tag === 'PRE' || tag === 'P')) {
-           startIndex = index;      
-        } 
+           startIndex = index;
+        }
       } else if (id && (tag === 'PRE' || tag === 'P')) {
           endIndex = index;
           wrapWithFlockdocs();
@@ -186,5 +186,5 @@ $(function (){
   $('.flockdocs').each(function() {
     $(this).hover(displayButton, removeButton);
     $(this).click(displayIframe.bind(null, $(this)));
-  }); 
+  });
 });
