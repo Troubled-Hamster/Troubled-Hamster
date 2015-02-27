@@ -15,7 +15,8 @@ var utils = {
     request
       .get('http://localhost:3000/api/methods/' + libraryName + '/' + methodName)
       .end(function(err, res){
-        ServerActions.dispatchNewStackInfo(res.body);
+        console.dir(res.body.topQuestions);
+        ServerActions.dispatchNewStackInfo(res.body.topQuestions);
       });
   },
 
@@ -23,10 +24,11 @@ var utils = {
     request
       .get('http://localhost:3000/flockdocs/' + libraryName + '/' + methodName)
       .end(function(err, res){
-        ServerActions.dispatchNewExamples(res.body);
+        ServerActions.dispatchNewExamples(res.body.docHelp);
       });
   }
 
 };
 
 module.exports = utils;
+

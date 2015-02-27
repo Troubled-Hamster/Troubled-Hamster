@@ -1,9 +1,10 @@
 var StackStore = require('../store/StackStore');
+var Question = require('./Question');
 
 var StackOverflow = React.createClass({
 
   getInitialState: function() {
-    return {items: [{
+    return {questions: [{
       title: '',
       body: 'CLICK ON A METHOD TO SEE STACK OVERFLOW CONTENT',
       answers: ''
@@ -19,13 +20,9 @@ var StackOverflow = React.createClass({
   },
 
   render: function(){
-    var stackQAs = this.state.items.map(function(question){
+    var stackQAs = this.state.questions.map(function(question){
       return (
-        <div className="stack">
-        <h1 className="title">{question.title}</h1>
-          <div className="question hidden">{question.body}</div>
-          <div className="answer hidden">{question.answers}</div>
-        </div>
+        <Question title={question.title} body={question.body} answers={question.answers} />
       );
     });
     return (
