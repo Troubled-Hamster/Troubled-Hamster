@@ -16,7 +16,7 @@ module.exports = {
 
         stackHTMLGenerator.generateHTML(req, res, method.topQuestions);
       }
-      res.send(method);
+      res.end();
     }, function(err) {
       console.log("ERROR:");
       console.dir(err);

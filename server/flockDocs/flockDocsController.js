@@ -12,7 +12,8 @@ module.exports = {
       } else {
         commentHTMLGenerator.generateHTML(req, res, method.comments);
       }
-      res.send(method);
+
+      res.end();
     });
   },
 
