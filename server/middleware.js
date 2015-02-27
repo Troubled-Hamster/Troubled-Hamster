@@ -11,6 +11,7 @@ module.exports = function (app, express) {
   var methodRouter = express.Router();
   var flockDocsRouter = express.Router();
   var annotationRouter = express.Router();
+  var reactRouter = express.Router();
 
   app.use(cors());
 
@@ -22,6 +23,7 @@ module.exports = function (app, express) {
   app.use('/api/methods', methodRouter); // use method router for all method requests
   app.use('/flockdocs', flockDocsRouter);
   app.use('/annotation', annotationRouter);
+  app.use('/react', reactRouter);
 
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
@@ -30,6 +32,7 @@ module.exports = function (app, express) {
   require('./methods/methodRoutes.js')(methodRouter);
   require('./flockDocs/flockDocsRoutes.js')(flockDocsRouter);
   require('./annotation/annotationRoutes.js')(annotationRouter);
+  require('./react/reactRoutes.js')(reactRouter);
 
 
 

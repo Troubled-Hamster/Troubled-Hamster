@@ -1,5 +1,4 @@
-var Method = require('./methodModel.js');
-var stackHTMLGenerator = require('./stackHTMLGenerator.js');
+var Method = require('../methods/methodModel.js');
 
 module.exports = {
 
@@ -9,13 +8,6 @@ module.exports = {
     console.log(libraryName + "/" + methodName);
     Method.findOne({name: methodName, library: libraryName})
     .exec().then(function(method) {
-      if(!method) {
-        stackHTMLGenerator.generateHTML(req, res, []);
-      } else {
-        console.log("Method top questions: " + method.topQuestions[0]);
-
-        stackHTMLGenerator.generateHTML(req, res, method.topQuestions);
-      }
       res.send(method);
     }, function(err) {
       console.log("ERROR:");
