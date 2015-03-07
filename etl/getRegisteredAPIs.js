@@ -34,12 +34,12 @@ var getLibraryMethods = function(url){
 
       // Get the title of the library
       if(window.location.hostname === 'nodejs.org'){
-        libraryCollection.name = window.location.host.split('.')[0];
+        libraryCollection.name = 'node';
       } else {
-        libraryCollection.name = window.$('title').text();
+        libraryCollection.name = window.$('title').text().split('.')[0].toLowerCase();
       }
 
-      if(libraryCollection.name === 'nodejs') {
+      if(libraryCollection.name === 'node') {
         var headers = window.$('h2, h3');
 
         headers.each(function(index){
@@ -75,12 +75,7 @@ var getLibraryMethods = function(url){
           console.log('Libraries saved!');
         }
       });
-      // Write the library collection to a file
-      // var fileName = './server/libraries/supportedlibraries/' + libraryCollection.name + '.json';
-      // fs.writeFile(fileName, JSON.stringify(libraryCollection), function(err){
-      //   if (err) throw err;
-      //   console.log('Library information saved!')
-      // })
+
     });
 };
 
