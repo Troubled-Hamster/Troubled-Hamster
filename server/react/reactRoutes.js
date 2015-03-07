@@ -5,5 +5,6 @@ module.exports = function (reactRouter) {
   // app is injected from middlware.js
 
   reactRouter.get('/:library/:method', reactController.getMethod);
+  reactRouter.get('/:library/scroll/:method', reactController.getScrollMethod);
 
 };

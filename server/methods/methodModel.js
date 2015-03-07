@@ -1,13 +1,17 @@
 var mongoose = require('mongoose');
 
 var MethodSchema = new mongoose.Schema({
+  scrollKey: {
+    type: String, 
+    required: true
+  },
   name: {
     type: String,
-    required: true,
+    required: true
   },
   library: {
     type: String,
-    required: true,
+    required: true
   },
   topQuestions: [{}],
   comments: [],
