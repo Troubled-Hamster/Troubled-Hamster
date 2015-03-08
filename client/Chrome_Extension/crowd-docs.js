@@ -1,10 +1,10 @@
 $(function (){
 
-  var title = $('title')[0].innerHTML;
+  var title = $('title')[0].innerHTML.split('.')[0].toLowerCase();
 
   //wrap sections in flockdocs divs
   var docElements;
-  if (title === 'Underscore.js') {
+  if (title === 'underscore') {
     docElements = $('#documentation').children();
     var inAPIDocs = true;
   } else {
@@ -72,7 +72,7 @@ $(function (){
     // if either one of alias or code exist, append the button
     if ($appendPosition) {
       // create button and add class & onclick event
-      var image = chrome.extension.getURL('assets/stackLogo.png');
+      var image = chrome.extension.getURL('assets/colorcrowd.png');
       var $img = $('<img/>');
       $img.addClass('crowd-docs-button').attr('src', image);
       var leftOffset;
